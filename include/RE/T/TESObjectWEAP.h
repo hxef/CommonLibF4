@@ -76,6 +76,130 @@ namespace RE
 			static constexpr auto RTTI{ RTTI::TESObjectWEAP__InstanceData };
 			static constexpr auto VTABLE{ VTABLE::TESObjectWEAP__InstanceData };
 
+			// override (TBO_InstanceData)
+			//
+			// Each runs the game's own function by its ID, so a call the
+			// compiler makes without the vtable, as on TESObjectWEAP::weaponData,
+			// gets the same answer as a call through it.
+			BGSKeywordForm* GetKeywordData() const override  // 01
+			{
+				using func_t = decltype(&InstanceData::GetKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetKeywordData };
+				return func(this);
+			}
+
+			void DeleteKeywordData() override  // 02
+			{
+				using func_t = decltype(&InstanceData::DeleteKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::DeleteKeywordData };
+				return func(this);
+			}
+
+			void CreateKeywordData() override  // 03
+			{
+				using func_t = decltype(&InstanceData::CreateKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::CreateKeywordData };
+				return func(this);
+			}
+
+			BGSBlockBashData* GetBlockBashData() const override  // 04
+			{
+				using func_t = decltype(&InstanceData::GetBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetBlockBashData };
+				return func(this);
+			}
+
+			void DeleteBlockBashData() override  // 05
+			{
+				using func_t = decltype(&InstanceData::DeleteBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::DeleteBlockBashData };
+				return func(this);
+			}
+
+			void CreateBlockBashData() override  // 06
+			{
+				using func_t = decltype(&InstanceData::CreateBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::CreateBlockBashData };
+				return func(this);
+			}
+
+			BSTArray<EnchantmentItem*>* GetEnchantmentArray() const override  // 07
+			{
+				using func_t = decltype(&InstanceData::GetEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetEnchantmentArray };
+				return func(this);
+			}
+
+			void DeleteEnchantmentArray() override  // 08
+			{
+				using func_t = decltype(&InstanceData::DeleteEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::DeleteEnchantmentArray };
+				return func(this);
+			}
+
+			void CreateEnchantmentArray() override  // 09
+			{
+				using func_t = decltype(&InstanceData::CreateEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::CreateEnchantmentArray };
+				return func(this);
+			}
+
+			BSTArray<BGSMaterialSwap*>* GetMaterialSwapArray() const override  // 0A
+			{
+				using func_t = decltype(&InstanceData::GetMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetMaterialSwapArray };
+				return func(this);
+			}
+
+			void DeleteMaterialSwapArray() override  // 0B
+			{
+				using func_t = decltype(&InstanceData::DeleteMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::DeleteMaterialSwapArray };
+				return func(this);
+			}
+
+			void CreateMaterialSwapArray() override  // 0C
+			{
+				using func_t = decltype(&InstanceData::CreateMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::CreateMaterialSwapArray };
+				return func(this);
+			}
+
+			float GetWeight() const override  // 0D
+			{
+				using func_t = decltype(&InstanceData::GetWeight);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetWeight };
+				return func(this);
+			}
+
+			std::int32_t GetValue() const override  // 0E
+			{
+				using func_t = decltype(&InstanceData::GetValue);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetValue };
+				return func(this);
+			}
+
+			float GetColorRemappingIndex() const override  // 10
+			{
+				using func_t = decltype(&InstanceData::GetColorRemappingIndex);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::GetColorRemappingIndex };
+				return func(this);
+			}
+
+			void PostAttach3D(NiAVObject* a_obj3D, TESObjectREFR* a_ref) const override  // 11
+			{
+				using func_t = decltype(&InstanceData::PostAttach3D);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::PostAttach3D };
+				return func(this, a_obj3D, a_ref);
+			}
+
+			void PostApplyMods(const TESBoundObject* a_object) override  // 12
+			{
+				using func_t = decltype(&InstanceData::PostApplyMods);
+				static REL::Relocation<func_t> func{ ID::TESObjectWEAP::InstanceData::PostApplyMods };
+				return func(this, a_object);
+			}
+
 			// members
 			BGSSoundDescriptorForm*                                         attackSound;            // 010
 			BGSSoundDescriptorForm*                                         attackSound2D;          // 018

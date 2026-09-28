@@ -2288,6 +2288,26 @@ namespace RE::ID
 
 	namespace TESObjectARMO
 	{
+		namespace InstanceData
+		{
+			inline constexpr REL::ID GetKeywordData{ 2715386 };
+			inline constexpr REL::ID DeleteKeywordData{ 2198505 };
+			inline constexpr REL::ID CreateKeywordData{ 2198504 };
+			inline constexpr REL::ID GetBlockBashData{ 2715387 };
+			inline constexpr REL::ID DeleteBlockBashData{ 2198508 };
+			inline constexpr REL::ID CreateBlockBashData{ 2198507 };
+			inline constexpr REL::ID GetEnchantmentArray{ 2715388 };
+			inline constexpr REL::ID DeleteEnchantmentArray{ 2198511 };
+			inline constexpr REL::ID CreateEnchantmentArray{ 2198510 };
+			inline constexpr REL::ID GetMaterialSwapArray{ 2198512 };
+			inline constexpr REL::ID DeleteMaterialSwapArray{ 2198514 };
+			inline constexpr REL::ID CreateMaterialSwapArray{ 2198513 };
+			inline constexpr REL::ID GetWeight{ 2198515 };
+			inline constexpr REL::ID GetValue{ 2198516 };
+			inline constexpr REL::ID GetHealth{ 2198517 };
+			inline constexpr REL::ID GetColorRemappingIndex{ 2198518 };
+		}
+
 		inline constexpr REL::ID Protects{ 2198535 };
 	}
 
@@ -2379,6 +2399,27 @@ namespace RE::ID
 
 	namespace TESObjectWEAP
 	{
+		namespace InstanceData
+		{
+			inline constexpr REL::ID GetKeywordData{ 2198893 };
+			inline constexpr REL::ID DeleteKeywordData{ 2198895 };
+			inline constexpr REL::ID CreateKeywordData{ 2198894 };
+			inline constexpr REL::ID GetBlockBashData{ 2198896 };
+			inline constexpr REL::ID DeleteBlockBashData{ 2198898 };
+			inline constexpr REL::ID CreateBlockBashData{ 2198897 };
+			inline constexpr REL::ID GetEnchantmentArray{ 2198899 };
+			inline constexpr REL::ID DeleteEnchantmentArray{ 2198901 };
+			inline constexpr REL::ID CreateEnchantmentArray{ 2198900 };
+			inline constexpr REL::ID GetMaterialSwapArray{ 2198902 };
+			inline constexpr REL::ID DeleteMaterialSwapArray{ 2198904 };
+			inline constexpr REL::ID CreateMaterialSwapArray{ 2198903 };
+			inline constexpr REL::ID GetWeight{ 2198905 };
+			inline constexpr REL::ID GetValue{ 2198906 };
+			inline constexpr REL::ID GetColorRemappingIndex{ 2198907 };
+			inline constexpr REL::ID PostAttach3D{ 2198909 };
+			inline constexpr REL::ID PostApplyMods{ 2198908 };
+		}
+
 		inline constexpr REL::ID GetProjectile{ 2198934 };
 		inline constexpr REL::ID GetMeleeAttackSpeed{ 2198957 };
 		inline constexpr REL::ID GetMeleeAttackSpeedLabel{ 2198959 };

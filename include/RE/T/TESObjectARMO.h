@@ -50,6 +50,123 @@ namespace RE
 			static constexpr auto RTTI{ RTTI::TESObjectARMO__InstanceData };
 			static constexpr auto VTABLE{ VTABLE::TESObjectARMO__InstanceData };
 
+			// override (TBO_InstanceData)
+			//
+			// Each runs the game's own function by its ID, so a call the
+			// compiler makes without the vtable, as on TESObjectARMO::armorData,
+			// gets the same answer as a call through it.
+			BGSKeywordForm* GetKeywordData() const override  // 01
+			{
+				using func_t = decltype(&InstanceData::GetKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetKeywordData };
+				return func(this);
+			}
+
+			void DeleteKeywordData() override  // 02
+			{
+				using func_t = decltype(&InstanceData::DeleteKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::DeleteKeywordData };
+				return func(this);
+			}
+
+			void CreateKeywordData() override  // 03
+			{
+				using func_t = decltype(&InstanceData::CreateKeywordData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::CreateKeywordData };
+				return func(this);
+			}
+
+			BGSBlockBashData* GetBlockBashData() const override  // 04
+			{
+				using func_t = decltype(&InstanceData::GetBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetBlockBashData };
+				return func(this);
+			}
+
+			void DeleteBlockBashData() override  // 05
+			{
+				using func_t = decltype(&InstanceData::DeleteBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::DeleteBlockBashData };
+				return func(this);
+			}
+
+			void CreateBlockBashData() override  // 06
+			{
+				using func_t = decltype(&InstanceData::CreateBlockBashData);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::CreateBlockBashData };
+				return func(this);
+			}
+
+			BSTArray<EnchantmentItem*>* GetEnchantmentArray() const override  // 07
+			{
+				using func_t = decltype(&InstanceData::GetEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetEnchantmentArray };
+				return func(this);
+			}
+
+			void DeleteEnchantmentArray() override  // 08
+			{
+				using func_t = decltype(&InstanceData::DeleteEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::DeleteEnchantmentArray };
+				return func(this);
+			}
+
+			void CreateEnchantmentArray() override  // 09
+			{
+				using func_t = decltype(&InstanceData::CreateEnchantmentArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::CreateEnchantmentArray };
+				return func(this);
+			}
+
+			BSTArray<BGSMaterialSwap*>* GetMaterialSwapArray() const override  // 0A
+			{
+				using func_t = decltype(&InstanceData::GetMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetMaterialSwapArray };
+				return func(this);
+			}
+
+			void DeleteMaterialSwapArray() override  // 0B
+			{
+				using func_t = decltype(&InstanceData::DeleteMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::DeleteMaterialSwapArray };
+				return func(this);
+			}
+
+			void CreateMaterialSwapArray() override  // 0C
+			{
+				using func_t = decltype(&InstanceData::CreateMaterialSwapArray);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::CreateMaterialSwapArray };
+				return func(this);
+			}
+
+			float GetWeight() const override  // 0D
+			{
+				using func_t = decltype(&InstanceData::GetWeight);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetWeight };
+				return func(this);
+			}
+
+			std::int32_t GetValue() const override  // 0E
+			{
+				using func_t = decltype(&InstanceData::GetValue);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetValue };
+				return func(this);
+			}
+
+			std::uint32_t GetHealth() const override  // 0F
+			{
+				using func_t = decltype(&InstanceData::GetHealth);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetHealth };
+				return func(this);
+			}
+
+			float GetColorRemappingIndex() const override  // 10
+			{
+				using func_t = decltype(&InstanceData::GetColorRemappingIndex);
+				static REL::Relocation<func_t> func{ ID::TESObjectARMO::InstanceData::GetColorRemappingIndex };
+				return func(this);
+			}
+
 			// members
 			BSTArray<EnchantmentItem*>*                                     enchantments;         // 10
 			BSTArray<BGSMaterialSwap*>*                                     materialSwaps;        // 18
