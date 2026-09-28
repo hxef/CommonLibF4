@@ -10,6 +10,7 @@ namespace RE::ID
 	namespace Actor
 	{
 		inline constexpr REL::ID AddPerk{ 2230121 };
+		inline constexpr REL::ID CanBarterItem{ 2229789 };
 		inline constexpr REL::ID CanUseIdle{ 2229592 };
 		inline constexpr REL::ID ClearAttackStates{ 2229773 };
 		inline constexpr REL::ID EndInterruptPackage{ 2229892 };
@@ -61,6 +62,7 @@ namespace RE::ID
 		inline constexpr REL::ID CalcArmorRating1{ 2230008 };
 		inline constexpr REL::ID CalcArmorRating2{ 2230009 };
 		inline constexpr REL::ID UnequipObject{ 2230479 };
+		inline constexpr REL::ID EquipShouldEquipItems{ 2229945 };
 		inline constexpr REL::ID UpdateSoundCallBack{ 2229974 };
 		inline constexpr REL::ID GetFactionRank{ 2230100 };
 		inline constexpr REL::ID IsAngryWithPlayer{ 2229998 };
@@ -80,6 +82,7 @@ namespace RE::ID
 		inline constexpr REL::ID EquipObject{ 2231392 };
 		inline constexpr REL::ID UnequipObject{ 2231395 };
 		inline constexpr REL::ID UnequipItem{ 2231399 };
+		inline constexpr REL::ID ToggleEquipInventoryItem{ 2231402 };
 		inline constexpr REL::ID CanEquip{ 2231405 };
 	}
 
@@ -152,6 +155,7 @@ namespace RE::ID
 		inline constexpr REL::ID ClearTradingData{ 2222700 };
 		inline constexpr REL::ID CompleteTrade{ 2222701 };
 		inline constexpr REL::ID GetCapsOwedByPlayer{ 2222714 };
+		inline constexpr REL::ID GetInvestmentAmount{ 2222715 };
 	}
 
 	namespace BGSAnimationSystemUtils
@@ -983,6 +987,7 @@ namespace RE::ID
 
 	namespace ContainerMenu
 	{
+		inline constexpr REL::ID GetCanEquipItem{ 2248616 };
 		inline constexpr REL::ID TakeAllItems{ 2248619 };
 	}
 
@@ -992,6 +997,8 @@ namespace RE::ID
 		{
 			inline constexpr REL::ID IncrementSort{ 2222848 };
 		}
+
+		inline constexpr REL::ID SetContainerRef{ 2222851 };
 	}
 
 	namespace ControlMap
@@ -1080,6 +1087,7 @@ namespace RE::ID
 		inline constexpr REL::ID IsFavorite{ 2190189 };
 		inline constexpr REL::ID IsDamaged{ 2190224 };
 		inline constexpr REL::ID IsItemBroken{ 2190223 };
+		inline constexpr REL::ID IsQuestObject{ 2190568 };
 		inline constexpr REL::ID CompareList{ 2190098 };
 		inline constexpr REL::ID SetFavorite{ 2190188 };
 		inline constexpr REL::ID GetPrimitive{ 2190427 };
@@ -2143,6 +2151,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 4796135 };
 		inline constexpr REL::ID AddFormToDataHandler{ 2192271 };
+		inline constexpr REL::ID BuildBarterContainer{ 2192332 };
 		inline constexpr REL::ID CheckModsLoaded{ 2192323 };
 		inline constexpr REL::ID CreateReferenceAtLocation{ 2192301 };
 		inline constexpr REL::ID IsFormIDInuse{ 2192351 };
@@ -2319,6 +2328,7 @@ namespace RE::ID
 		inline constexpr REL::ID ApplyEffectShader{ 2205201 };
 		inline constexpr REL::ID Enable{ 2201150 };
 		inline constexpr REL::ID FindReferenceFor3D{ 2201082 };
+		inline constexpr REL::ID GetCalcLevel{ 2202630 };
 		inline constexpr REL::ID GetCurrentLocation{ 2201163 };
 		inline constexpr REL::ID GetDisplayFullName{ 2201126 };
 		inline constexpr REL::ID GetDistanceFromPoint{ 2201172 };

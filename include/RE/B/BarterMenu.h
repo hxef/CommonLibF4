@@ -57,6 +57,19 @@ namespace RE
 			return func(this);
 		}
 
+		// The caps the player can invest in this trader now: what the
+		// kInvestInVendor entry point allows, less the ExtraInvestedGold on
+		// vendorChestRef, or 0 where that leaves nothing or the player cannot
+		// pay it. vendorChestRef is the vendor faction's merchantContainer, or
+		// the trader where the faction has none. The screen's INVEST works
+		// while this is above 0.
+		[[nodiscard]] std::uint32_t GetInvestmentAmount()
+		{
+			using func_t = decltype(&BarterMenu::GetInvestmentAmount);
+			static REL::Relocation<func_t> func{ ID::BarterMenu::GetInvestmentAmount };
+			return func(this);
+		}
+
 		// members
 		BSTHashMap<InventoryInterface::Handle*, ItemBarterData*> barteredItems;              // 430
 		std::unique_ptr<BSGFxShaderFXTarget>                     capsTransferInfo_mc;        // 460

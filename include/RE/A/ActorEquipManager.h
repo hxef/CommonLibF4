@@ -38,19 +38,43 @@ namespace RE
 		}
 
 		// Whether the actor is allowed to equip the item the handle names, and
-		// what stops it when it is not. Equipping through the Pip-Boy, the
-		// favourites bar or a quick key asks this first and turns anything but
-		// kSuccess into the matching HUD message.
+		// what stops it when it is not. The container screen asks this before
+		// offering to equip an item. ToggleEquipInventoryItem asks it first and
+		// turns a refusal into the matching HUD message, except
+		// kEquipStateLocked when a_locked is set. CanEquip does not look at
+		// whether the item is already on, and the toggle asks it before it
+		// looks, so an answer that refuses the item also stops it coming off.
 		//
-		// kItemBroken is the one answer an unmodified game never gives. It comes
-		// from ExtraDataList::IsItemBroken, so it needs an item whose health has
-		// been written down as zero or less, and nothing in the base game writes
-		// an item's health at all.
+		// kItemBroken comes from ExtraDataList::IsItemBroken, so it needs an
+		// item whose health has been written down as zero or less. In the base
+		// game only a power armor piece gets one.
 		[[nodiscard]] CanEquipResult CanEquip(Actor* a_actor, const std::uint32_t& a_handleID, std::uint32_t a_stackID)
 		{
 			using func_t = decltype(&ActorEquipManager::CanEquip);
 			static REL::Relocation<func_t> func{ ID::ActorEquipManager::CanEquip };
 			return func(this, a_actor, a_handleID, a_stackID);
+		}
+
+		// Puts the item the handle names on the actor, or takes it off when
+		// that stack already holds a slot. The Pip-Boy, the quick keys, the
+		// container screen's equip button and Actor::EquipShouldEquipItems
+		// all equip through this. It asks CanEquip first either way. Answers
+		// false when the handle names nothing, after a refusal, and for an
+		// item that is on while a_allowUnequip is false, as a quick key passes
+		// it. a_slot is null from every caller in the game. a_locked lets it
+		// past kEquipStateLocked, puts the item on forced and locked and takes
+		// it off forced, as the container screen does for a companion.
+		bool ToggleEquipInventoryItem(
+			Actor*               a_actor,
+			const std::uint32_t& a_handleID,
+			std::uint32_t        a_stackID,
+			const BGSEquipSlot*  a_slot,
+			bool                 a_allowUnequip,
+			bool                 a_locked)
+		{
+			using func_t = decltype(&ActorEquipManager::ToggleEquipInventoryItem);
+			static REL::Relocation<func_t> func{ ID::ActorEquipManager::ToggleEquipInventoryItem };
+			return func(this, a_actor, a_handleID, a_stackID, a_slot, a_allowUnequip, a_locked);
 		}
 
 		bool EquipObject(

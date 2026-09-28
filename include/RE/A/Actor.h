@@ -246,6 +246,22 @@ namespace RE
 			return func(this, a_perk, a_rank);
 		}
 
+		// Whether this trader deals in a_item, the rule the barter screen hides
+		// a stack by. Never a key. Otherwise the item's keywords against the
+		// vendor faction's sell and buy list, turned round by notBuySell, where
+		// the item type's own keyword, when the game names one, stands for the
+		// item's keywords. A misc item the keywords miss still matches when one
+		// of its components is in the list, turned round the same way.
+		// a_playerSide is the player's half, and a_stolen with the 2 skips
+		// bring in or leave out the stolen goods rules and the list. It
+		// refreshes the actor's cached vendor faction first.
+		[[nodiscard]] bool CanBarterItem(TESBoundObject* a_item, bool a_playerSide, bool a_stolen, bool a_skipStolenRules, bool a_skipList)
+		{
+			using func_t = decltype(&Actor::CanBarterItem);
+			static REL::Relocation<func_t> func{ ID::Actor::CanBarterItem };
+			return func(this, a_item, a_playerSide, a_stolen, a_skipStolenRules, a_skipList);
+		}
+
 		bool CanUseIdle(TESIdleForm* a_idle) const
 		{
 			using func_t = decltype(&Actor::CanUseIdle);
@@ -462,6 +478,10 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::Actor::IsPathingComplete };
 			return func(this);
 		}
+
+		// The flag Actor.IsPlayerTeammate reads and Actor.SetPlayerTeammate
+		// sets.
+		[[nodiscard]] bool IsPlayerTeammate() const noexcept { return niFlags.flags & 0x4000000; }
 
 		bool IsQuadruped()
 		{

@@ -189,6 +189,17 @@ namespace RE
 			return func(this);
 		}
 
+		// Whether the item this list belongs to is a quest item: some alias
+		// holding it has the Quest Object flag. For an item inside a container
+		// the aliases sit on its own reference, which ExtraReferenceHandles'
+		// originalRef names, and this looks there.
+		[[nodiscard]] inline bool IsQuestObject() const
+		{
+			using func_t = decltype(&ExtraDataList::IsQuestObject);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::IsQuestObject };
+			return func(this);
+		}
+
 		inline bool CompareList(const ExtraDataList* a_compare, ComparisonQualifier a_qualifier)
 		{
 			using func_t = decltype(&ExtraDataList::CompareList);

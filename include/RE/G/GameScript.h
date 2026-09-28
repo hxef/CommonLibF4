@@ -2,6 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
+#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSScript_CompiledScriptLoader.h"
 #include "RE/B/BSScript_ErrorLogger.h"
 #include "RE/B/BSScript_IClientVM.h"
@@ -229,6 +230,52 @@ namespace RE
 			std::uint32_t stackID;  // 0C
 		};
 		static_assert(sizeof(DelayFunctor) == 0x10);
+
+		// ObjectReference.AddItem, which the game runs on its main thread once
+		// the script has queued it. The item is a base form, a leveled list, a
+		// form list or a reference. With inventoryItem set, the item is a
+		// container instead and inventoryItem the unique ID of one item inside
+		// it.
+		class __declspec(novtable) AddItemFunctor :
+			public DelayFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::GameScript____AddItemFunctor };
+			static constexpr auto VTABLE{ VTABLE::GameScript____AddItemFunctor };
+
+			// members
+			ObjectRefHandle                            target;         // 10
+			TESFormID                                  item;           // 14
+			std::int32_t                               count;          // 18
+			std::uint16_t                              inventoryItem;  // 1C
+			bool                                       silent;         // 1E
+			BSTSmartPointer<BSScript::IVirtualMachine> vm;             // 20
+		};
+		static_assert(sizeof(AddItemFunctor) == 0x28);
+
+		// ObjectReference.RemoveItem and RemoveItemByComponent, run the same
+		// way. The items leave source for otherContainer, or leave the game
+		// where otherContainer is none. A count of -1 takes every one. With
+		// inventoryItem set, item is 0 and inventoryItem the unique ID of one
+		// item inside source.
+		class __declspec(novtable) RemoveItemFunctor :
+			public DelayFunctor  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::GameScript____RemoveItemFunctor };
+			static constexpr auto VTABLE{ VTABLE::GameScript____RemoveItemFunctor };
+
+			// members
+			BSTSmartPointer<BSScript::IVirtualMachine> vm;              // 10
+			ObjectRefHandle                            source;          // 18
+			ObjectRefHandle                            otherContainer;  // 1C
+			TESFormID                                  item;            // 20
+			std::int32_t                               count;           // 24
+			std::uint16_t                              inventoryItem;   // 28
+			bool                                       silent;          // 2A
+			bool                                       byComponent;     // 2B
+		};
+		static_assert(sizeof(RemoveItemFunctor) == 0x30);
 
 		class __declspec(novtable) Logger :
 			public BSScript::ErrorLogger  // 00

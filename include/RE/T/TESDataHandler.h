@@ -17,6 +17,7 @@ namespace RE
 	class NEW_REFR_DATA;
 	class TESFile;
 	class TESObjectList;
+	class TESObjectREFR;
 	class TESRegionDataManager;
 	class TESRegionList;
 
@@ -42,6 +43,26 @@ namespace RE
 			using func_t = decltype(&TESDataHandler::AddFormToDataHandler);
 			static REL::Relocation<func_t> func{ ID::TESDataHandler::AddFormToDataHandler };
 			return func(this, a_form);
+		}
+
+		// Makes the trader's half of a barter screen afresh: a new temporary
+		// reference holding copies of what a_vendor carries unequipped and of
+		// every chest behind them, restocked first where due, each copy's
+		// ExtraOriginalReference naming the reference it came from. Where the
+		// vendor faction's vendor location is a near reference or a cell, the
+		// loose items and containers the faction owns near that reference, or
+		// near the trader for a cell, go in last, except the faction's
+		// merchantContainer. Each such container replaces everything gathered
+		// before it, and the items taken from it get no ExtraOriginalReference.
+		// The copy made before is released. The screen counts the trader's caps
+		// off the copy, so caps paid into a chest outside a trade show there
+		// only once it is made again, as the game does after a trade or an
+		// investment.
+		[[nodiscard]] ObjectRefHandle BuildBarterContainer(TESObjectREFR* a_vendor)
+		{
+			using func_t = decltype(&TESDataHandler::BuildBarterContainer);
+			static REL::Relocation<func_t> func{ ID::TESDataHandler::BuildBarterContainer };
+			return func(this, a_vendor);
 		}
 
 		[[nodiscard]] bool CheckModsLoaded(bool a_everModded)

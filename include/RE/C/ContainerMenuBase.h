@@ -93,6 +93,16 @@ namespace RE
 			}
 		}
 
+		// Points the container's half at a_ref, which UpdateList(true) then
+		// lists. The barter screen does it with each copy of the trader's goods
+		// TESDataHandler::BuildBarterContainer makes.
+		void SetContainerRef(const ObjectRefHandle& a_ref)
+		{
+			using func_t = decltype(&ContainerMenuBase::SetContainerRef);
+			static REL::Relocation<func_t> func{ ID::ContainerMenuBase::SetContainerRef };
+			return func(this, a_ref);
+		}
+
 		// members
 		ItemSorter                                      containerItemSorter;            // 0F0
 		ItemSorter                                      playerItemSorter;               // 12C

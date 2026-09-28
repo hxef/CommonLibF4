@@ -318,6 +318,24 @@ namespace RE
 			}
 		}
 
+		// The level this reference's leveled lists roll at, never 0: its
+		// encounter zone's locked level, or the player's level held inside the
+		// zone's minimum and maximum, below the minimum only with
+		// kMatchPCBelowMin. With no zone it is the player's level, which a
+		// worldspace's level map holds inside the uDefaultLevelZone0N minimum
+		// and maximum the map gives the cell, or multiplies by
+		// fLeveledActorMultEasy in a cell the map leaves out.
+		// InitStartingInventory rolls a container's stock at it. a_adjust steps
+		// a counter all such calls share and adds it to the level, so a caller
+		// that only asks passes false. The counter runs from minus
+		// iCalcLevelAdjustDown to iCalcLevelAdjustUp, both 0 in Fallout4.esm.
+		[[nodiscard]] std::uint16_t GetCalcLevel(bool a_adjust)
+		{
+			using func_t = decltype(&TESObjectREFR::GetCalcLevel);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetCalcLevel };
+			return func(this, a_adjust);
+		}
+
 		[[nodiscard]] BGSLocation* GetCurrentLocation() const
 		{
 			using func_t = decltype(&TESObjectREFR::GetCurrentLocation);
