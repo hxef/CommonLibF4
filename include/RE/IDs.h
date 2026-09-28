@@ -63,8 +63,13 @@ namespace RE::ID
 		inline constexpr REL::ID GetDesirability{ 2229946 };
 		inline constexpr REL::ID CalcArmorRating1{ 2230008 };
 		inline constexpr REL::ID CalcArmorRating2{ 2230009 };
+		inline constexpr REL::ID RecalcArmorRating{ 2230010 };
+		inline constexpr REL::ID InvalidateArmorRating{ 2229954 };
+		inline constexpr REL::ID GetDamageResist{ 2231085 };
+		inline constexpr REL::ID EquipObject{ 2230478 };
 		inline constexpr REL::ID UnequipObject{ 2230479 };
 		inline constexpr REL::ID EquipShouldEquipItems{ 2229945 };
+		inline constexpr REL::ID CastWornItemEnchantments{ 2231285 };
 		inline constexpr REL::ID UpdateSoundCallBack{ 2229974 };
 		inline constexpr REL::ID GetFactionRank{ 2230100 };
 		inline constexpr REL::ID IsAngryWithPlayer{ 2229998 };
@@ -97,6 +102,8 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::ID GetEquippedArmorDamageResistance{ 2227189 };
+		inline constexpr REL::ID SumEquippedArmorDamageTypes{ 2227208 };
+		inline constexpr REL::ID UpdateEquippedArmorResistances{ 2227187 };
 	}
 
 	namespace ActorValue
@@ -954,6 +961,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetNumCrippledAttackConditions{ 2209041 };
 		inline constexpr REL::ID CalcScopeSteadyActionPointDrain{ 2209045 };
 		inline constexpr REL::ID CalcResistedPercentage{ 2209007 };
+		inline constexpr REL::ID CalcArmorHealthBonus{ 2209088 };
 	}
 
 	namespace CombatUtilities
@@ -1063,6 +1071,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetBuildConfirmQuestion{ 2223057 };
 	}
 
+	namespace ExitPowerArmor
+	{
+		inline constexpr REL::ID GetEventSource{ 2249039 };
+	}
+
 	namespace Explosion
 	{
 		inline constexpr REL::ID GetActorOwner{ 2236659 };
@@ -1086,6 +1099,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetDisplayNameFromInstanceData{ 2190179 };
 		inline constexpr REL::ID SetOverrideName{ 2190167 };
 		inline constexpr REL::ID SetStartingWorldOrCell{ 2190506 };
+		inline constexpr REL::ID GetHealth{ 2190225 };
 		inline constexpr REL::ID GetHealthPerc{ 2190226 };
 		inline constexpr REL::ID SetHealthPerc{ 2190124 };
 		inline constexpr REL::ID ClearFavorite{ 2190191 };
@@ -1517,6 +1531,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID IsTakingHealthDamageFromActiveEffect{ 2226397 };
 		inline constexpr REL::ID IsTakingRadDamageFromActiveEffect{ 2226398 };
+		inline constexpr REL::ID DispelEffectsFromSource{ 2226380 };
 	}
 
 	namespace Main
@@ -1718,6 +1733,7 @@ namespace RE::ID
 		inline constexpr REL::ID PopulateItemCardInfo{ 2225266 };
 		inline constexpr REL::ID QueueItemCardRepopulate{ 2225281 };
 		inline constexpr REL::ID RepopulateItemCardOnSection{ 2225279 };
+		inline constexpr REL::ID UpdateSlotResists{ 2225790 };
 	}
 
 	namespace PipboyInventoryMenu
@@ -1920,7 +1936,21 @@ namespace RE::ID
 
 	namespace PowerArmor
 	{
+		namespace DamagePieceStackFunctor
+		{
+			inline constexpr REL::ID _operator{ 2219514 };
+		}
+
+		namespace EventHandler
+		{
+			inline constexpr REL::ID Singleton{ 992887 };
+			inline constexpr REL::ID ProcessHitEvent{ 2219468 };
+			inline constexpr REL::ID ProcessTriggerEnterEvent{ 2219469 };
+			inline constexpr REL::ID ProcessTriggerLeaveEvent{ 2219470 };
+		}
+
 		inline constexpr REL::ID ActorInPowerArmor{ 2219437 };
+		inline constexpr REL::ID DamagePiecesOrLimb{ 2219520 };
 		inline constexpr REL::ID GetArmorKeyword{ 2194743 };
 		inline constexpr REL::ID GetBatteryKeyword{ 2194740 };
 		inline constexpr REL::ID GetDefaultBatteryObject{ 2194761 };

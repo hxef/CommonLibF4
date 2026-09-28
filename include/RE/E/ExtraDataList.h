@@ -143,6 +143,17 @@ namespace RE
 			func(this, a_form);
 		}
 
+		// The item's health in points: its full health times the fraction in
+		// this list's ExtraHealth, or the full health where there is none. The
+		// full health is the instance data's where that gives one, a_form's
+		// otherwise. -1 when it is 0, as on a form with no health.
+		[[nodiscard]] inline float GetHealth(const TESForm* a_form) const
+		{
+			using func_t = decltype(&ExtraDataList::GetHealth);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetHealth };
+			return func(this, a_form);
+		}
+
 		inline float GetHealthPerc()
 		{
 			using func_t = decltype(&ExtraDataList::GetHealthPerc);

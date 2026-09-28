@@ -44,6 +44,18 @@ namespace RE
 			return func(this);
 		}
 
+		// Ends every active effect on this target whose source is a_source
+		// through ActiveEffect::Dispel with a_force. A worn item's enchantments
+		// have the item as their source. Actor::UnequipObject calls it before
+		// it takes the item off, with a_force false for an armor and true for
+		// a weapon.
+		void DispelEffectsFromSource(TESBoundObject* a_source, bool a_force)
+		{
+			using func_t = decltype(&MagicTarget::DispelEffectsFromSource);
+			static REL::Relocation<func_t> func{ ID::MagicTarget::DispelEffectsFromSource };
+			return func(this, a_source, a_force);
+		}
+
 		// members
 		SpellDispelData* postUpdateDispelList;  // 08
 		std::int8_t      flags;                 // 10

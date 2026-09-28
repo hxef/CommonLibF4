@@ -269,6 +269,21 @@ namespace RE
 			return func(this, a_idle);
 		}
 
+		// Casts what an armor or a weapon gives its wearer: every enchantment
+		// in a_object's instance data, then the record's own enchantment, or
+		// where it has none the one in a_extra's ExtraEnchantment, each through
+		// the instant caster with the item as the effect's source, which is
+		// what MagicTarget::DispelEffectsFromSource matches on when the item
+		// comes off. Actor::EquipObject calls it as the item goes on. Where
+		// a_object carries no instance data it is read from a_extra, which can
+		// be null.
+		void CastWornItemEnchantments(const BGSObjectInstance& a_object, ExtraDataList* a_extra)
+		{
+			using func_t = decltype(&Actor::CastWornItemEnchantments);
+			static REL::Relocation<func_t> func{ ID::Actor::CastWornItemEnchantments };
+			return func(this, a_object, a_extra);
+		}
+
 		void ClearAttackStates()
 		{
 			using func_t = decltype(&Actor::ClearAttackStates);
@@ -342,6 +357,16 @@ namespace RE
 			using func_t = decltype(&Actor::GetCurrentFireLocation);
 			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentFireLocation };
 			return func(this, a_index, a_fireLocation);
+		}
+
+		// The actor's DamageResist, the armor rating a physical blow meets.
+		// HitData::ApplyResistances reads it for every hit that deals physical
+		// damage.
+		[[nodiscard]] float GetDamageResist() const
+		{
+			using func_t = decltype(&Actor::GetDamageResist);
+			static REL::Relocation<func_t> func{ ID::Actor::GetDamageResist };
+			return func(this);
 		}
 
 		float GetDesiredSpeed()
@@ -445,6 +470,17 @@ namespace RE
 		{
 			using func_t = decltype(&Actor::InitiateDoNothingPackage);
 			static REL::Relocation<func_t> func{ ID::Actor::InitiateDoNothingPackage };
+			return func(this);
+		}
+
+		// Marks the armor rating stale, the way the game does on every change
+		// of clothes: armorRating and armorBaseFactorSum go to -1 and
+		// DamageResist's entry leaves avStorage, so the next read of
+		// DamageResist adds the worn pieces up again through CalcArmorRating1.
+		void InvalidateArmorRating()
+		{
+			using func_t = decltype(&Actor::InvalidateArmorRating);
+			static REL::Relocation<func_t> func{ ID::Actor::InvalidateArmorRating };
 			return func(this);
 		}
 
@@ -554,6 +590,17 @@ namespace RE
 			using func_t = decltype(&Actor::QueueMeleeHit);
 			static REL::Relocation<func_t> func{ ID::Actor::QueueMeleeHit };
 			return func(this, a_equipIndex, a_deal);
+		}
+
+		// Returns armorBaseFactorSum, and when it is below 0, the mark
+		// InvalidateArmorRating leaves, first marks the rating stale the same
+		// way and adds the worn pieces up again into armorRating and
+		// armorBaseFactorSum. The game itself never calls it.
+		float RecalcArmorRating()
+		{
+			using func_t = decltype(&Actor::RecalcArmorRating);
+			static REL::Relocation<func_t> func{ ID::Actor::RecalcArmorRating };
+			return func(this);
 		}
 
 		void RemovePerk(BGSPerk* a_perk)

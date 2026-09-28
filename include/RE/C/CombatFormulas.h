@@ -3,6 +3,7 @@
 #include "RE/A/ActorValueOwner.h"
 #include "RE/B/BGSEquipIndex.h"
 #include "RE/B/BGSObjectInstance.h"
+#include "RE/T/TESObjectARMO.h"
 #include "RE/T/TESObjectWEAP.h"
 
 namespace RE
@@ -111,6 +112,21 @@ namespace RE
 			using func_t = decltype(&CombatFormulas::CalcScopeSteadyActionPointDrain);
 			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcScopeSteadyActionPointDrain };
 			return func(a_actor, a_deltaSec);
+		}
+
+		// The bonus an item's health adds to an armor's rating, Skyrim's
+		// tempering: (a_health - fHealthDataValue1) / (fHealthDataValue6 -
+		// fHealthDataValue1) * (fSmithingArmorMax - 1) + 1, doubled for an
+		// armor carrying DEFAULT_OBJECT::kKeywordCuirass, never below 0. The
+		// armor rating visitor and the item card both add it to the rating.
+		// With Fallout 4's settings, 1.1, 1.6 and 10, it is 0 for any health up
+		// to about 1.044, which covers every item at or below full, and 1 at
+		// 1.1. Fallout4.esm leaves kKeywordCuirass empty, so nothing doubles.
+		[[nodiscard]] inline float CalcArmorHealthBonus(float a_health, const TESObjectARMO* a_armor, const TESObjectARMO::InstanceData* a_data)
+		{
+			using func_t = decltype(&CombatFormulas::CalcArmorHealthBonus);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcArmorHealthBonus };
+			return func(a_health, a_armor, a_data);
 		}
 
 		[[nodiscard]] inline float CalcResistedPercentage(const ActorValueInfo* a_resistance, float a_damage, float a_resistancePoints)

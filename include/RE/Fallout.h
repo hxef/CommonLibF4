@@ -681,6 +681,7 @@
 #include "RE/E/EquippedWeaponData.h"
 #include "RE/E/ExamineConfirmMenu.h"
 #include "RE/E/ExamineMenu.h"
+#include "RE/E/ExitPowerArmor.h"
 #include "RE/E/Explosion.h"
 #include "RE/E/ExteriorCellSingleton.h"
 #include "RE/E/ExtraAliasInstanceArray.h"
