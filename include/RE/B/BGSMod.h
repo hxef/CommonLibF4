@@ -203,6 +203,19 @@ namespace RE::BGSMod
 				return func(this);
 			}
 
+			// The mod association keywords of the record's MNAM, every one of
+			// which an item needs before this mod fits it. The game keeps them
+			// in a map beside the forms, not in the mod, and this looks the mod
+			// up there. Null for a mod without any. attachParents is DATA's
+			// attach parent slots instead, the attach points this mod gives
+			// other mods to fit into.
+			[[nodiscard]] BGSTypedKeywordValueArray<KeywordType::kModAssociation>* GetTargetOMODKeywords() const
+			{
+				using func_t = decltype(&Mod::GetTargetOMODKeywords);
+				static REL::Relocation<func_t> func{ ID::BGSMod::Attachment::Mod::GetTargetOMODKeywords };
+				return func(this);
+			}
+
 			void SetLooseMod(TESObjectMISC* misc)
 			{
 				using func_t = decltype(&Mod::SetLooseMod);

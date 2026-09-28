@@ -365,6 +365,17 @@ namespace RE
 			return func(this, a_equipIndex);
 		}
 
+		// The weapon equipped in a_equipIndex with its instance data, built
+		// into a_result, which comes back. a_result holds nothing when that
+		// slot holds anything but a weapon. It is built in place without
+		// letting go of what a_result held, so pass one that holds nothing.
+		BGSObjectInstanceT<TESObjectWEAP>* GetEquippedWeapon(BGSObjectInstanceT<TESObjectWEAP>* a_result, BGSEquipIndex a_equipIndex)
+		{
+			using func_t = decltype(&Actor::GetEquippedWeapon);
+			static REL::Relocation<func_t> func{ ID::Actor::GetEquippedWeapon };
+			return func(this, a_result, a_equipIndex);
+		}
+
 		bool GetGhost()
 		{
 			using func_t = decltype(&Actor::GetGhost);
@@ -532,6 +543,17 @@ namespace RE
 			using func_t = decltype(&Actor::PlaySoundByEditorName);
 			static REL::Relocation<func_t> func{ ID::Actor::PlaySoundByEditorName };
 			return func(this, a_handle, a_editorName, a_loop, a_usageFlags);
+		}
+
+		// Queues the blow of the melee attack in a_equipIndex, the one the
+		// HitFrame event of an attack animation lands. The queued task takes the
+		// action points, and while a_deal is set it also sweeps for a target
+		// and deals the blow, which raises the hit event.
+		void QueueMeleeHit(BGSEquipIndex a_equipIndex, bool a_deal)
+		{
+			using func_t = decltype(&Actor::QueueMeleeHit);
+			static REL::Relocation<func_t> func{ ID::Actor::QueueMeleeHit };
+			return func(this, a_equipIndex, a_deal);
 		}
 
 		void RemovePerk(BGSPerk* a_perk)

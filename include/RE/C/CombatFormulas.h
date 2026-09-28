@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/A/ActorValueOwner.h"
+#include "RE/B/BGSEquipIndex.h"
 #include "RE/B/BGSObjectInstance.h"
 #include "RE/T/TESObjectWEAP.h"
 
@@ -54,6 +56,47 @@ namespace RE
 			using func_t = decltype(&CombatFormulas::CalcWeaponDamage);
 			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcWeaponDamage };
 			return func(a_avOwner, a_data, a_ammo, a_condition, a_rangeMult);
+		}
+
+		// The speed an actor plays its attacks with a weapon at, as a multiple
+		// of the animation's own. The animation graph reads it every frame as
+		// weaponSpeedMult, and an automatic gun fires a held burst from its
+		// attack animation looping, so this is also how fast the burst fires.
+		//
+		// It is the weapon's speed, off the instance data where there is one,
+		// times the actor's WeaponSpeedMult, or LeftWeaponSpeedMult for any
+		// equip index but 0, which counts as 1 at 0.001 or less. Two
+		// handed swords and axes take fWeaponTwoHandedAnimationSpeedMult on
+		// top, and the player's bolt action weapon takes
+		// fVATSBoltActionAnimSpeedMult while VATS plays an attack back. So a
+		// mod that raises the speed, such as an automatic receiver or the Rapid
+		// legendary, quickens the attack through this.
+		//
+		// Returns 1 for no actor or no weapon.
+		[[nodiscard]] inline float CalcWeaponSpeedMult(const Actor* a_actor, const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, BGSEquipIndex a_equipIndex)
+		{
+			using func_t = decltype(&CombatFormulas::CalcWeaponSpeedMult);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcWeaponSpeedMult };
+			return func(a_actor, a_weapon, a_equipIndex);
+		}
+
+		// How much a VATS attack that rolls a hit adds to the VATS critical
+		// meter, which is full at fVATSCriticalChargeLimit, 100 by default.
+		//
+		// It is fVATSCriticalChargeBase plus the actor's Luck times
+		// fVATSCriticalChargeMult, plus the weapon's own critical charge bonus
+		// times fVATSCriticalChargeBonusMult. Perks have the last word through
+		// the Mod VATS Critical Charge entry point, which is handed the player
+		// whoever the actor values came from, since the meter is the player's.
+		//
+		// a_weapon may hold no object, and then the weapon's bonus is left out.
+		// For a player with no weapon the game passes the race's unarmedWeapon,
+		// or UnarmedDefault, 000001F4, when the race has none.
+		[[nodiscard]] inline float CalcVATSCriticalCharge(const ActorValueOwner* a_avOwner, const BGSObjectInstanceT<TESObjectWEAP>& a_weapon)
+		{
+			using func_t = decltype(&CombatFormulas::CalcVATSCriticalCharge);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcVATSCriticalCharge };
+			return func(a_avOwner, a_weapon);
 		}
 
 		[[nodiscard]] inline std::int64_t GetNumCrippledAttackConditions(Actor* a_actor)

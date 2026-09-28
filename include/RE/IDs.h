@@ -47,6 +47,7 @@ namespace RE::ID
 		inline constexpr REL::ID OnMagazineEmpty{ 2231137 };
 		inline constexpr REL::ID PerformAction{ 2231177 };
 		inline constexpr REL::ID PlaySoundByEditorName{ 2230172 };
+		inline constexpr REL::ID QueueMeleeHit{ 2231141 };
 		inline constexpr REL::ID RemovePerk{ 2230122 };
 		inline constexpr REL::ID Reset3D{ 2229913 };
 		inline constexpr REL::ID RewardExperience{ 2230428 };
@@ -56,6 +57,7 @@ namespace RE::ID
 		inline constexpr REL::ID UpdateVoiceTimer{ 2230178 };
 		inline constexpr REL::ID GetBodyPartData{ 2229571 };
 		inline constexpr REL::ID GetEquippedItem{ 2231089 };
+		inline constexpr REL::ID GetEquippedWeapon{ 2231092 };
 		inline constexpr REL::ID GetCrimeTrackingFaction{ 2229787 };
 		inline constexpr REL::ID ForceDetect{ 2230194 };
 		inline constexpr REL::ID GetDesirability{ 2229946 };
@@ -311,6 +313,7 @@ namespace RE::ID
 				inline constexpr REL::ID FindModsForLooseMod{ 2197524 };
 				inline constexpr REL::ID GetData{ 0 };  // 33658 - inlined?
 				inline constexpr REL::ID GetLooseMod{ 2197514 };
+				inline constexpr REL::ID GetTargetOMODKeywords{ 2197534 };
 				inline constexpr REL::ID SetLooseMod{ 2197558 };
 			}
 
@@ -946,6 +949,8 @@ namespace RE::ID
 		inline constexpr REL::ID GetWeaponDisplayRateOfFire{ 2209048 };
 		inline constexpr REL::ID CalcTargetedLimbDamage{ 2209033 };
 		inline constexpr REL::ID CalcWeaponDamage{ 2209001 };
+		inline constexpr REL::ID CalcWeaponSpeedMult{ 2209006 };
+		inline constexpr REL::ID CalcVATSCriticalCharge{ 2209089 };
 		inline constexpr REL::ID GetNumCrippledAttackConditions{ 2209041 };
 		inline constexpr REL::ID CalcScopeSteadyActionPointDrain{ 2209045 };
 		inline constexpr REL::ID CalcResistedPercentage{ 2209007 };
@@ -2421,6 +2426,7 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::ID GetProjectile{ 2198934 };
+		inline constexpr REL::ID GetRateOfFire{ 2198956 };
 		inline constexpr REL::ID GetMeleeAttackSpeed{ 2198957 };
 		inline constexpr REL::ID GetMeleeAttackSpeedLabel{ 2198959 };
 		inline constexpr REL::ID Fire{ 2198960 };
@@ -2522,6 +2528,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 4797733 };
 		inline constexpr REL::ID CanActivateCriticals{ 2237208 };
+	}
+
+	namespace WeaponFiredEvent
+	{
+		inline constexpr REL::ID GetEventSource{ 4797962 };
 	}
 
 	namespace WorkbenchMenuBase

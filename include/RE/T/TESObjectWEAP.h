@@ -281,6 +281,32 @@ namespace RE
 			return func(a_weapon, a_ammo, a_instanceData);
 		}
 
+		// How many attacks a second this weapon makes. The fire rate an item
+		// card prints is this times fDispRoFMult, 10 by default, see
+		// CombatFormulas::GetWeaponDisplayRateOfFire, and the player's attack
+		// handler waits 1 over it between 2 attacks with most weapons.
+		//
+		// Weapons come in 4 shapes, counted 4 ways. A bolt action spends
+		// the bolt charge on top of the attack itself. A weapon that holds a
+		// single round, or that charges as it reloads, is paced by its reload
+		// instead. An automatic is paced by its attack animation, which counts
+		// for fDispRoFShotsPerFile shots on a gun and fDispMeleeRoFHitsPerFile
+		// swings on a melee weapon, 20 and 5 by default. Everything else makes
+		// 1 attack per attack delay. The bolt charge, an automatic's attack
+		// animation and the attack delay are divided by the weapon's speed and
+		// the reload by its reload speed, so a mod that quickens a weapon
+		// shortens whichever of them applies. A bolt action's attack animation
+		// counts at full length.
+		//
+		// a_instanceData may be null, in which case the base form's own data
+		// answers. Returns 0 for a weapon that attacks in no time at all.
+		[[nodiscard]] static float GetRateOfFire(const TESObjectWEAP& a_weapon, const InstanceData* a_instanceData)
+		{
+			using func_t = decltype(&TESObjectWEAP::GetRateOfFire);
+			static REL::Relocation<func_t> func{ ID::TESObjectWEAP::GetRateOfFire };
+			return func(a_weapon, a_instanceData);
+		}
+
 		[[nodiscard]] MELEE_ATTACK_SPEED GetMeleeAttackSpeed()
 		{
 			using func_t = decltype(&TESObjectWEAP::GetMeleeAttackSpeed);

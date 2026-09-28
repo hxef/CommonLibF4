@@ -1479,6 +1479,7 @@
 #include "RE/W/WadingWaterData.h"
 #include "RE/W/WaterShaderData.h"
 #include "RE/W/WeaponAnimationGraphManagerHolder.h"
+#include "RE/W/WeaponFiredEvent.h"
 #include "RE/W/WeatherEntry.h"
 #include "RE/W/WorkbenchData.h"
 #include "RE/W/WorkbenchMenuBase.h"
