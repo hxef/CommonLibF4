@@ -46,7 +46,9 @@ namespace RE
 		// override
 		virtual BSEventNotifyControl ProcessEvent(const ApplyColorUpdateEvent& a_event, BSTEventSource<ApplyColorUpdateEvent>* a_source) override  // 01
 		{
-			using func_t = decltype(&BSGFxShaderFXTarget::ProcessEvent);
+			// The game's function sits in the sink's table, so it takes the
+			// sink part of the object, at 0x50, as this.
+			using func_t = BSEventNotifyControl (*)(BSTEventSink<ApplyColorUpdateEvent>*, const ApplyColorUpdateEvent&, BSTEventSource<ApplyColorUpdateEvent>*);
 			static REL::Relocation<func_t> func{ ID::BSGFxShaderFXTarget::ProcessEvent };
 			return func(this, a_event, a_source);
 		}
@@ -94,7 +96,7 @@ namespace RE
 		}
 
 		// members
-		UIShaderColors                              shaderFX;             // 58
+		UIShaderColors                              shaderFX{};           // 58
 		BSTArray<BSGFxShaderFXTarget*>              shaderFXObjects;      // 90
 		REX::TEnumSet<HUDColorTypes, std::uint32_t> HUDColorType;         // A8
 		REX::TEnumSet<HUDColorTypes, std::uint32_t> backgroundColorType;  // AC
@@ -102,6 +104,9 @@ namespace RE
 	private:
 		void ctor_shared()
 		{
+			// Full brightness, as the game's own constructor starts it.
+			shaderFX.colorBrightness = 1.0F;
+
 			if (HasMember("bUseShadedBackground")) {
 				Scaleform::GFx::Value bUseShadedBackground;
 				if (GetMember("bUseShadedBackground", &bUseShadedBackground)) {

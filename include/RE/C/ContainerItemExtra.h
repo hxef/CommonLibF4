@@ -4,6 +4,7 @@
 
 namespace RE
 {
+	// A healthMult of 1.0 is full health.
 	class ContainerItemExtra
 	{
 	public:
@@ -26,13 +27,13 @@ namespace RE
 		ContainerItemExtra() :
 			ownerForm(nullptr),
 			conditional(),
-			healthMult(100.0f)
+			healthMult(1.0f)
 		{}
 
 		ContainerItemExtra(TESForm* a_owner) :
 			ownerForm(a_owner),
 			conditional(),
-			healthMult(100.0f)
+			healthMult(1.0f)
 		{}
 
 		F4_HEAP_REDEFINE_NEW(ContainerItemExtra);
