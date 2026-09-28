@@ -136,6 +136,12 @@ namespace RE
 				return func(a_name);
 			}
 
+			[[nodiscard]] static BSReadWriteLock& GetRenderersLock()
+			{
+				static REL::Relocation<BSReadWriteLock*> renderersLock{ ID::Interface3D::RenderersLock };
+				return *renderersLock;
+			}
+
 			void MainScreen_AddPointLight(
 				NiPoint3 a_translation,
 				NiColor  a_diffuse,

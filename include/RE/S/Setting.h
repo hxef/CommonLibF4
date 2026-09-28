@@ -320,10 +320,14 @@ namespace RE
 			return *singleton;
 		}
 
+		// Ignores case, as the game does. A string setting's key starts with
+		// S in place of s once the game stores a new value in it.
 		[[nodiscard]] Setting* GetSetting(std::string_view a_name)
 		{
 			for (auto& setting : settings) {
-				if (setting->GetKey() == a_name) {
+				const auto key = setting->GetKey();
+				if (key.size() == a_name.size() &&
+					_strnicmp(key.data(), a_name.data(), a_name.size()) == 0) {
 					return setting;
 				}
 			}

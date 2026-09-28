@@ -126,6 +126,19 @@ namespace RE
 		};
 		static_assert(sizeof(InitDataRepairFailure) == 0x58);
 
+		virtual ~ExamineConfirmMenu();  // 00
+
+		// override (GameMenuBase)
+		virtual void               Call(const Params&) override;                                    // 01
+		virtual void               MapCodeObjectFunctions() override;                               // 02
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                   // 03
+		virtual void               AdvanceMovie(float a_timeDelta, std::uint64_t a_time) override;  // 04
+
+		// override (BSInputEventUser)
+		virtual bool ShouldHandleEvent(const InputEvent*) override;       // 01
+		virtual void OnThumbstickEvent(const ThumbstickEvent*) override;  // 04
+		virtual void OnButtonEvent(const ButtonEvent*) override;          // 08
+
 		// members
 		Scaleform::GFx::Value confirmObj;  // E0
 	};

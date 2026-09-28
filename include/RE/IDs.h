@@ -1429,6 +1429,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Create{ 2222519 };
 		inline constexpr REL::ID GetByName{ 2222524 };
+		inline constexpr REL::ID RenderersLock{ 4803745 };
 		inline constexpr REL::ID MainScreen_AddPointLight{ 2222531 };
 		inline constexpr REL::ID MainScreen_AddSpotLight{ 2222532 };
 		inline constexpr REL::ID MainScreen_ClearLights{ 2222533 };
@@ -2028,6 +2029,8 @@ namespace RE::ID
 			inline constexpr REL::ID Singleton{ 4797590 };
 			inline constexpr REL::ID InitCollection{ 2188690 };
 		}
+
+		inline constexpr REL::ID sLanguage{ 1527977 };
 	}
 
 	namespace SitWaitMenu
@@ -2256,6 +2259,11 @@ namespace RE::ID
 	namespace TESLoadGameEvent
 	{
 		inline constexpr REL::ID GetEventSource{ 2201848 };
+	}
+
+	namespace TESLoadScreen
+	{
+		inline constexpr REL::ID GetLoadNIFModel{ 2204241 };
 	}
 
 	namespace TESLocationClearedEvent

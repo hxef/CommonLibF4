@@ -24,11 +24,17 @@ namespace RE
 		static_assert(sizeof(ItemBarterData) == 0x38);
 
 		// override
-		virtual UI_MESSAGE_RESULTS                   ProcessMessage(UIMessage& a_message) override;                                                                                             // 03
-		virtual bool                                 OnButtonEventRelease(const BSFixedString& a_eventName) override;                                                                           // 0F
-		virtual void                                 ConfirmInvestment() override;                                                                                                              // 14
-		virtual void                                 DoItemTransfer(std::uint32_t a_itemIndex, std::uint32_t a_count, bool a_fromContainer) override;                                           // 15
-		virtual bool                                 GetDisplayBarterValues() override;                                                                                                         // 16
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                                                    // 03
+		virtual bool               OnButtonEventRelease(const BSFixedString& a_eventName) override;                                  // 0F
+		virtual void               ConfirmInvestment() override;                                                                     // 14
+		virtual void               DoItemTransfer(std::uint32_t a_itemIndex, std::uint32_t a_count, bool a_fromContainer) override;  // 15
+		virtual bool               GetDisplayBarterValues() override;                                                                // 16
+		// Sets the direction of the trader's markup before it prices the row,
+		// as DoItemTransfer does: what the trader pays for an item of the
+		// player's own, a pending sale included, and what they charge for the
+		// rest. While the screen is open every price the game works out takes
+		// the direction set last. The movie calls it as getItemValue for the
+		// quantity slider.
 		virtual std::uint32_t                        GetItemValue(std::uint32_t a_itemIndex, bool a_inContainer) override;                                                                      // 1A
 		virtual const InventoryUserUIInterfaceEntry* GetInventoryItemByListIndex(bool a_inContainer, std::uint32_t a_index) override;                                                           // 1B
 		virtual void                                 PopulateMenuObj(ObjectRefHandle a_inventoryRef, const InventoryUserUIInterfaceEntry& a_entry, Scaleform::GFx::Value& a_menuObj) override;  // 1C

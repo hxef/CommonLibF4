@@ -22,6 +22,30 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::ContainerMenuBase };
 		static constexpr auto VTABLE{ VTABLE::ContainerMenuBase };
 
+		// The numbers the menu gives to the functions its Flash movie can call.
+		// When the movie calls one, Call receives its number in params.userData.
+		// 14 goes to none.
+		enum class CodeObjectFunction : std::uint32_t
+		{
+			kPlaySound = 0,
+			kTransferItem = 1,
+			kOnIntroAnimComplete = 2,
+			kShow3D = 3,
+			kExitMenu = 4,
+			kTakeAllItems = 5,
+			kGetItemValue = 6,
+			kUpdateItemPickpocketInfo = 7,
+			kGetSelectedItemEquippable = 8,
+			kGetSelectedItemEquipped = 9,
+			kToggleSelectedItemEquipped = 10,
+			kConfirmInvest = 11,
+			kSendXButton = 12,
+			kSendYButton = 13,
+			kUpdateSortButtonLabel = 15,
+			kSortItems = 16,
+			kInspectItem = 17
+		};
+
 		class __declspec(novtable) FXQuantityMenu :
 			public BSGFxShaderFXTarget  // 000
 		{

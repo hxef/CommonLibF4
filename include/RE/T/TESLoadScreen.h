@@ -30,6 +30,17 @@ namespace RE
 		};
 		static_assert(sizeof(LoadNIFData) == 0x50);
 
+		// The model of loadNIFData's loadNif when that is a static object or a
+		// static collection, and nullptr for any other form or none. The
+		// loading menu draws only a model this returns, so a weapon given as
+		// loadNif shows nothing.
+		[[nodiscard]] TESModel* GetLoadNIFModel() const
+		{
+			using func_t = decltype(&TESLoadScreen::GetLoadNIFModel);
+			static REL::Relocation<func_t> func{ ID::TESLoadScreen::GetLoadNIFModel };
+			return func(this);
+		}
+
 		// members
 		TESCondition       conditions;   // 20
 		LoadNIFData*       loadNIFData;  // 28
