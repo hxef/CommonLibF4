@@ -1069,6 +1069,8 @@ namespace RE::ID
 		inline constexpr REL::ID ConsumeSelectedItems{ 2223052 };
 		inline constexpr REL::ID BuildConfirmed{ 2223013 };
 		inline constexpr REL::ID GetBuildConfirmQuestion{ 2223057 };
+		inline constexpr REL::ID TryCreate{ 2223050 };
+		inline constexpr REL::ID ConfirmCallback{ 4803830 };
 	}
 
 	namespace ExitPowerArmor

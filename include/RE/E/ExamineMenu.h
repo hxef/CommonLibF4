@@ -120,6 +120,14 @@ namespace RE
 			return func(this, a_data, a_callback);
 		}
 
+		// The callback of the confirmation box a bench put up last, nullptr once it
+		// closes. Every bench and the power armor station store theirs here.
+		[[nodiscard]] static ExamineConfirmMenu::ICallback* GetConfirmCallback()
+		{
+			static REL::Relocation<ExamineConfirmMenu::ICallback**> callback{ ID::ExamineMenu::ConfirmCallback };
+			return *callback;
+		}
+
 		void ConsumeSelectedItems(bool a_autoBuild, const BGSSoundDescriptorForm* a_consumeSound)
 		{
 			using func_t = decltype(&ExamineMenu::ConsumeSelectedItems);
