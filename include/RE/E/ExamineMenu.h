@@ -38,6 +38,17 @@ namespace RE
 		};
 		static_assert(sizeof(ComponentBuilderFunctor) == 0x28);
 
+		// What CountComponentHeld counts and where it adds the count. The
+		// component goes in as the address of a pointer to it.
+		class ComponentTally
+		{
+		public:
+			// members
+			const TESForm* const* component;  // 00
+			std::uint32_t*        count;      // 08
+		};
+		static_assert(sizeof(ComponentTally) == 0x10);
+
 		virtual ~ExamineMenu();  // 00
 
 		// override (WorkbenchMenuBase)
@@ -126,6 +137,28 @@ namespace RE
 		{
 			static REL::Relocation<ExamineConfirmMenu::ICallback**> callback{ ID::ExamineMenu::ConfirmCallback };
 			return *callback;
+		}
+
+		// Whether a mod choice can be built: it has a recipe, the recipe's
+		// conditions pass and optimizedAutoBuildInv holds every required item.
+		// Shows nothing and plays no sound. TryCreate asks it first.
+		[[nodiscard]] bool CheckModChoiceRequirements(const ModChoiceData* a_choice)
+		{
+			using func_t = decltype(&ExamineMenu::CheckModChoiceRequirements);
+			static REL::Relocation<func_t> func{ ID::ExamineMenu::CheckModChoiceRequirements };
+			return func(this, a_choice);
+		}
+
+		// Adds how many of a component a_owner holds to *a_tally.count, never
+		// sets it, so start the count at 0. Junk counts by the units of the
+		// component inside it. An owner with no inventory list is counted from
+		// its base container, or not at all with a_skipBase. The requirements
+		// panel counts sharedContainerRef this way. a_owner must not be null.
+		static void CountComponentHeld(TESObjectREFR* a_owner, const ComponentTally& a_tally, bool a_skipBase)
+		{
+			using func_t = decltype(&ExamineMenu::CountComponentHeld);
+			static REL::Relocation<func_t> func{ ID::ExamineMenu::CountComponentHeld };
+			return func(a_owner, a_tally, a_skipBase);
 		}
 
 		void ConsumeSelectedItems(bool a_autoBuild, const BGSSoundDescriptorForm* a_consumeSound)

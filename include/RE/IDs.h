@@ -1071,6 +1071,8 @@ namespace RE::ID
 		inline constexpr REL::ID GetBuildConfirmQuestion{ 2223057 };
 		inline constexpr REL::ID TryCreate{ 2223050 };
 		inline constexpr REL::ID ConfirmCallback{ 4803830 };
+		inline constexpr REL::ID CheckModChoiceRequirements{ 2223051 };
+		inline constexpr REL::ID CountComponentHeld{ 2223101 };
 	}
 
 	namespace ExitPowerArmor
