@@ -76,6 +76,44 @@ namespace RE
 		};
 		static_assert(sizeof(InitData) == 0x20);
 
+		// The box a bench puts up before it builds: a row per required item,
+		// with the components it takes. Built by the game's own constructor,
+		// the way TryCreate builds it, so only Create makes one.
+		class __declspec(novtable) InitDataBuild :
+			public InitData  // 00
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::ExamineConfirmMenu__InitDataBuild };
+			static constexpr auto VTABLE{ VTABLE::ExamineConfirmMenu__InitDataBuild };
+
+			virtual ~InitDataBuild() = default;  // 00
+
+			// Copies a_components, as WorkbenchMenuBase::GetRequiredComponents
+			// fills them. The box reads a_requiredItems once, as it opens, so
+			// they have to stay at the same address until then. The box frees
+			// the data.
+			[[nodiscard]] static InitDataBuild* Create(const char* a_confirmQuestion, const char* a_buttonLabel, const BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* a_requiredItems, const BSScrapArray<BSTTuple<TESBoundObject*, std::uint32_t>>* a_components)
+			{
+				auto* data = RE::malloc<InitDataBuild>();
+				return data ? data->ctor(a_confirmQuestion, a_buttonLabel, a_requiredItems, a_components) : nullptr;
+			}
+
+			F4_HEAP_REDEFINE_NEW(InitDataBuild);
+
+			// members
+			const BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* requiredItems;  // 20
+			BSTArray<BSTTuple<TESBoundObject*, std::uint32_t>>                    components;     // 28
+
+		private:
+			InitDataBuild* ctor(const char* a_confirmQuestion, const char* a_buttonLabel, const BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* a_requiredItems, const BSScrapArray<BSTTuple<TESBoundObject*, std::uint32_t>>* a_components)
+			{
+				using func_t = decltype(&InitDataBuild::ctor);
+				static REL::Relocation<func_t> func{ ID::ExamineConfirmMenu::InitDataBuild::ctor };
+				return func(this, a_confirmQuestion, a_buttonLabel, a_requiredItems, a_components);
+			}
+		};
+		static_assert(sizeof(InitDataBuild) == 0x40);
+
 		class __declspec(novtable) InitDataScrap :
 			public InitData  // 00
 		{

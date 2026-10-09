@@ -168,6 +168,19 @@ namespace RE
 			return func(this, a_autoBuild, a_consumeSound);
 		}
 
+		// Gives a_leftoversTo, as scrap, what the junk in a_components holds
+		// beyond a_requiredItems. Reads a_components and never changes them.
+		// ConsumeSelectedItems calls it with workbenchContainerRef, or the
+		// player where that is empty, and a_scaled false, then takes
+		// a_components through RemoveObjectFromContainers. a_scaled multiplies
+		// every required count by a game value, keeping at least 1.
+		static void ResolveRecipeComponents(const BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* a_requiredItems, const BSScrapArray<BSTTuple<TESBoundObject*, std::uint32_t>>* a_components, TESObjectREFR* a_leftoversTo, bool a_scaled)
+		{
+			using func_t = decltype(&ExamineMenu::ResolveRecipeComponents);
+			static REL::Relocation<func_t> func{ ID::ExamineMenu::ResolveRecipeComponents };
+			return func(a_requiredItems, a_components, a_leftoversTo, a_scaled);
+		}
+
 		// members
 		ComponentBuilderFunctor                            componentFunctor;                    // 340
 		REX::TEnumSet<INSPECT_MODE_STATE, std::uint32_t>   inspectModeState;                    // 368

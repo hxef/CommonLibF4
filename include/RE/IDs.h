@@ -1061,6 +1061,14 @@ namespace RE::ID
 		inline constexpr REL::ID SetupFireSounds{ 2232275 };
 	}
 
+	namespace ExamineConfirmMenu
+	{
+		namespace InitDataBuild
+		{
+			inline constexpr REL::ID ctor{ 2222962 };
+		}
+	}
+
 	namespace ExamineMenu
 	{
 		inline constexpr REL::ID BuildWeaponScrappingArray{ 2223077 };
@@ -1073,6 +1081,7 @@ namespace RE::ID
 		inline constexpr REL::ID ConfirmCallback{ 4803830 };
 		inline constexpr REL::ID CheckModChoiceRequirements{ 2223051 };
 		inline constexpr REL::ID CountComponentHeld{ 2223101 };
+		inline constexpr REL::ID ResolveRecipeComponents{ 2223089 };
 	}
 
 	namespace ExitPowerArmor
@@ -2574,6 +2583,10 @@ namespace RE::ID
 		inline constexpr REL::ID UpdateOptimizedAutoBuildInv{ 2224955 };
 		inline constexpr REL::ID QCurrentModChoiceData{ 2224958 };
 		inline constexpr REL::ID ShowBuildFailureMessage{ 2224959 };
+		inline constexpr REL::ID GetRequiredComponents{ 2224941 };
+		inline constexpr REL::ID RemoveObjectFromContainers{ 2224960 };
+		inline constexpr REL::ID QueueCraftingComponent{ 1324921 };
+		inline constexpr REL::ID PlayCraftSound{ 2224940 };
 	}
 
 	namespace Workshop

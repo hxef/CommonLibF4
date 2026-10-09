@@ -13,6 +13,7 @@
 
 namespace RE
 {
+	class BGSSoundDescriptorForm;
 	class ExtraDataList;
 	class NiNode;
 
@@ -111,6 +112,50 @@ namespace RE
 			using func_t = decltype(&WorkbenchMenuBase::UpdateOptimizedAutoBuildInv);
 			static REL::Relocation<func_t> func{ ID::WorkbenchMenuBase::UpdateOptimizedAutoBuildInv };
 			return func(this);
+		}
+
+		// Fills an empty a_components with the items in a_inventory that make
+		// up a_requiredItems, junk standing in for the components it holds, an
+		// item and a count each. True when every required item is there.
+		// TryCreate fills its box's list this way and ConsumeSelectedItems what
+		// it takes, both from optimizedAutoBuildInv.
+		bool GetRequiredComponents(const BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* a_requiredItems, BGSInventoryList* a_inventory, BSScrapArray<BSTTuple<TESBoundObject*, std::uint32_t>>* a_components)
+		{
+			using func_t = decltype(&WorkbenchMenuBase::GetRequiredComponents);
+			static REL::Relocation<func_t> func{ ID::WorkbenchMenuBase::GetRequiredComponents };
+			return func(this, a_requiredItems, a_inventory, a_components);
+		}
+
+		// Takes a_count of a_object from sharedContainers in order, from each
+		// as many as it holds, until a_count is taken.
+		void RemoveObjectFromContainers(TESBoundObject* a_object, std::uint32_t a_count)
+		{
+			using func_t = decltype(&WorkbenchMenuBase::RemoveObjectFromContainers);
+			static REL::Relocation<func_t> func{ ID::WorkbenchMenuBase::RemoveObjectFromContainers };
+			return func(this, a_object, a_count);
+		}
+
+		// Adds a_component to queuedCraftingComponents, whose crafting sounds,
+		// or put down sounds for a form with none, UpdateMenu plays 1 at a time
+		// once soundsQueued is set. PlayCraftSound sets it. ConsumeSelectedItems
+		// queues every required item this way.
+		void QueueCraftingComponent(TESForm* a_component)
+		{
+			using func_t = decltype(&WorkbenchMenuBase::QueueCraftingComponent);
+			static REL::Relocation<func_t> func{ ID::WorkbenchMenuBase::QueueCraftingComponent };
+			return func(this, a_component);
+		}
+
+		// Stops the last build's loop, then, only with something in
+		// queuedCraftingComponents, sets soundsQueued and plays a_loop. UpdateMenu
+		// stops the loop once the last queued sound ends. BuildConfirmed passes
+		// CraftingLoopSound_Examine_DO's sound right after queueing the parts,
+		// and ConsumeSelectedItems passes the one its caller hands it.
+		void PlayCraftSound(BGSSoundDescriptorForm* a_loop)
+		{
+			using func_t = decltype(&WorkbenchMenuBase::PlayCraftSound);
+			static REL::Relocation<func_t> func{ ID::WorkbenchMenuBase::PlayCraftSound };
+			return func(this, a_loop);
 		}
 
 		// members
