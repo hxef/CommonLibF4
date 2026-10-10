@@ -49,6 +49,25 @@ namespace RE::BGSMod
 			kPair
 		};
 
+		// What Mod::target means on a mod made for armor.
+		enum class ARMOR_TARGET : std::uint32_t
+		{
+			kEnchantments,
+			kBashImpactDataSet,
+			kBlockMaterial,
+			kKeywords,
+			kWeight,
+			kValue,
+			kRating,
+			kAddonIndex,
+			kBodyPart,
+			kDamageTypeValue,
+			kActorValues,
+			kHealth,
+			kColorRemappingIndex,
+			kMaterialSwaps
+		};
+
 		enum class BLOCKIDS : std::uint32_t
 		{
 			kOMOD = 0x0,
