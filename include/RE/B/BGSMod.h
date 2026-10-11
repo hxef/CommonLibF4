@@ -115,6 +115,10 @@ namespace RE::BGSMod
 
 				// members
 				BSFixedString str;
+				// form, for kForm, holds the raw form ID until the game
+				// resolves the mod, then the form itself, or null when the ID
+				// names no form. fv, for kPair, keeps its form ID, moved to
+				// the mod's place in the load order.
 				TESForm*      form;
 				MinMax        mm;
 				FormValuePair fv;

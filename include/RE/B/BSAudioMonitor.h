@@ -6,8 +6,8 @@ namespace RE::BSAudioMonitor
 	{
 	public:
 		Request(std::uint16_t a_monitorID, float a_sendLevel) :
-			m_monitorID(a_monitorID),
-			m_sendLevel(a_sendLevel)
+			m_sendLevel(a_sendLevel),
+			m_monitorID(a_monitorID)
 		{}
 
 		[[nodiscard]] inline std::uint16_t GetID() const noexcept { return m_monitorID; }
