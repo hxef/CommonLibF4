@@ -129,6 +129,31 @@ namespace RE
 			return func(a_health, a_armor, a_data);
 		}
 
+		// A weapon's accuracy term, about 0 to 1: its aim model's cone, recoil
+		// and sights zoom weighed together, plus accuracyBonus / 100. With a
+		// perk owner the cone perks (kModConeOfFireMult) have a say.
+		// GetWeaponDisplayAccuracy prints it as a percent, and VATS counts it
+		// as 1 term of its hit chance, through CalcVATSHitChance.
+		[[nodiscard]] inline float CalcWeaponAccuracy(const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, Actor* a_perkOwner)
+		{
+			using func_t = decltype(&CombatFormulas::CalcWeaponAccuracy);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcWeaponAccuracy };
+			return func(a_weapon, a_perkOwner);
+		}
+
+		// The share of its damage a ranged hit at a_distance keeps: 1 out to
+		// the weapon's min range, then a straight line down to its
+		// outOfRangeDamageMult at the max range and beyond. Both ranges are
+		// multiplied by the kModGunRangeMult entry point for a_shooter, asked
+		// for any shooter given. HitData::Populate asks it for a blow that is
+		// not melee, and Projectile::GetRangeMult for a round that hits.
+		[[nodiscard]] inline float CalcRangeDamageMult(Actor* a_shooter, const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, float a_distance)
+		{
+			using func_t = decltype(&CombatFormulas::CalcRangeDamageMult);
+			static REL::Relocation<func_t> func{ ID::CombatFormulas::CalcRangeDamageMult };
+			return func(a_shooter, a_weapon, a_distance);
+		}
+
 		[[nodiscard]] inline float CalcResistedPercentage(const ActorValueInfo* a_resistance, float a_damage, float a_resistancePoints)
 		{
 			using func_t = decltype(&CombatFormulas::CalcResistedPercentage);

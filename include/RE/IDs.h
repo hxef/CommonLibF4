@@ -58,6 +58,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetBodyPartData{ 2229571 };
 		inline constexpr REL::ID GetEquippedItem{ 2231089 };
 		inline constexpr REL::ID GetEquippedWeapon{ 2231092 };
+		inline constexpr REL::ID GetAimModel{ 2231147 };
 		inline constexpr REL::ID GetCrimeTrackingFaction{ 2229787 };
 		inline constexpr REL::ID ForceDetect{ 2230194 };
 		inline constexpr REL::ID GetDesirability{ 2229946 };
@@ -142,6 +143,13 @@ namespace RE::ID
 	namespace AITimer
 	{
 		inline constexpr REL::ID fTimer{ 2698609 };
+	}
+
+	namespace AimModel
+	{
+		inline constexpr REL::ID ApplyConeOfFire{ 2214971 };
+		inline constexpr REL::ID GetMinMaxCone{ 2214973 };
+		inline constexpr REL::ID GetCurrentCone{ 2214974 };
 	}
 
 	namespace AnimationSystemUtils
@@ -962,6 +970,9 @@ namespace RE::ID
 		inline constexpr REL::ID CalcScopeSteadyActionPointDrain{ 2209045 };
 		inline constexpr REL::ID CalcResistedPercentage{ 2209007 };
 		inline constexpr REL::ID CalcArmorHealthBonus{ 2209088 };
+		inline constexpr REL::ID CalcWeaponAccuracy{ 2209004 };
+		inline constexpr REL::ID CalcVATSHitChance{ 2209034 };
+		inline constexpr REL::ID CalcRangeDamageMult{ 2209044 };
 	}
 
 	namespace CombatUtilities
@@ -1355,6 +1366,11 @@ namespace RE::ID
 		inline constexpr REL::ID ShowHolotapeInTerminal{ 2224029 };
 	}
 
+	namespace HUDCrosshair
+	{
+		inline constexpr REL::ID UpdateComponent{ 2220263 };
+	}
+
 	namespace HUDExperienceMeter
 	{
 		inline constexpr REL::ID UpdateDisplayObject{ 2220382 };
@@ -1502,6 +1518,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID AddItemCardInfoEntry{ 2222648 };
 		inline constexpr REL::ID PopulateItemCardInfo_Helper{ 2222625 };
+		inline constexpr REL::ID SortCompareItems{ 2222850 };
 	}
 
 	namespace ItemCrafted
@@ -2001,6 +2018,11 @@ namespace RE::ID
 		inline constexpr REL::ID AreHostileActorsNear{ 2234105 };
 		inline constexpr REL::ID IsActorTargetingREFinPackage{ 2234033 };
 		inline constexpr REL::ID RequestHighestDetectionLevelAgainstActor{ 2234111 };
+	}
+
+	namespace Projectile
+	{
+		inline constexpr REL::ID GetRangeMult{ 2236994 };
 	}
 
 	namespace RadioManager
