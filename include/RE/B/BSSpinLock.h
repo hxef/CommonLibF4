@@ -24,11 +24,21 @@ namespace RE
 			return func(this, a_id);
 		}
 
+		// The game inlines this everywhere, so it has no ID.
 		[[nodiscard]] bool try_lock()
 		{
-			using func_t = decltype(&BSSpinLock::try_lock);
-			static REL::Relocation<func_t> func{ ID::BSSpinLock::try_lock };
-			return func(this);
+			const auto      thread = REX::W32::GetCurrentThreadId();
+			REX::TAtomicRef lockCount{ _lockCount };
+			if (_owningThread == thread) {
+				++lockCount;
+				return true;
+			}
+			std::uint32_t expected{ 0 };
+			if (lockCount.compare_exchange_strong(expected, 1)) {
+				_owningThread = thread;
+				return true;
+			}
+			return false;
 		}
 
 		void unlock()

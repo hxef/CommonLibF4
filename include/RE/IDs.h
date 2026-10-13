@@ -39,7 +39,7 @@ namespace RE::ID
 		inline constexpr REL::ID IsFollowing{ 2230013 };
 		inline constexpr REL::ID IsJumping{ 2229640 };
 		inline constexpr REL::ID IsPathValid{ 2230279 };
-		inline constexpr REL::ID IsPathing{ 2234312 };
+		inline constexpr REL::ID IsPathing{ 2230276 };
 		inline constexpr REL::ID IsPathingComplete{ 2230274 };
 		inline constexpr REL::ID IsQuadruped{ 2229614 };
 		inline constexpr REL::ID IsSneaking{ 2207655 };
@@ -847,7 +847,6 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::ID lock{ 2192245 };
-		inline constexpr REL::ID try_lock{ 2267902 };
 	}
 
 	namespace BSStringPool
