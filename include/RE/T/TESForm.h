@@ -112,6 +112,18 @@ namespace RE
 		virtual std::uint32_t            GetFilledSlotsImpl() const { return static_cast<std::uint32_t>(-1); }                                                                                                                                            // 48
 		virtual float                    GetDesirability([[maybe_unused]] TBO_InstanceData* a_instanceData, [[maybe_unused]] const TESForm* a_user) const { return 0.0F; }                                                                                // 49
 
+		// AddChange that records even while the save and load object or the
+		// running thread says to record nothing, as the game does for the stock
+		// it gives a leveled container. It still refuses a temporary form.
+		// Before the save and load object exists its answer means nothing,
+		// unlike AddChange, which then says false.
+		bool AddChangeForced(std::uint32_t a_changeFlags)
+		{
+			using func_t = decltype(&TESForm::AddChangeForced);
+			static REL::Relocation<func_t> func{ ID::TESForm::AddChangeForced };
+			return func(this, a_changeFlags);
+		}
+
 		static void AddCompileIndex(std::uint32_t& a_id, TESFile* a_file)
 		{
 			using func_t = decltype(&TESForm::AddCompileIndex);
@@ -274,6 +286,9 @@ namespace RE
 
 		[[nodiscard]] bool IsPlayer() const noexcept { return GetFormID() == 0x00000007; }
 		[[nodiscard]] bool IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
+
+		// Set by SetTemporary. AddChange records nothing for such a form.
+		[[nodiscard]] bool IsTemporary() const noexcept { return (formFlags & (1u << 14)) != 0; }
 		[[nodiscard]] bool IsWeapon() const noexcept { return Is(ENUM_FORM_ID::kWEAP); }
 
 		void SetInGameFormFlags(std::uint16_t a_flags, bool a_value)

@@ -36,7 +36,7 @@ namespace RE
 		kFollower,                      //
 		kLevCreaMod,                    //
 		kGhost,                         //
-		kOriginalReference,             //
+		kOriginalReference,             // ExtraOriginalReference
 		kOwnership,                     //
 		kGlobal,                        //
 		kRank,                          //
@@ -71,7 +71,7 @@ namespace RE
 		kLastFinishedSequence,          //
 		kSavedAnimation,                //
 		kNorthRotation,                 //
-		kSpawnCount,                    //
+		kSpawnContainer,                // ExtraSpawnContainer
 		kFriendHits,                    //
 		kHeadTrackTarget,               //
 		kBoundArmor,                    //

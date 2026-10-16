@@ -432,6 +432,15 @@ namespace RE
 			return func(this, a_object);
 		}
 
+		// The health fraction in this reference's own extra data, as the console
+		// and scripts read it. -1 for an item with no health.
+		[[nodiscard]] float GetItemHealthPercent()
+		{
+			using func_t = decltype(&TESObjectREFR::GetItemHealthPercent);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetItemHealthPercent };
+			return func(this);
+		}
+
 		[[nodiscard]] TESObjectREFR* GetLinkedRef(BGSKeyword* a_keyword)
 		{
 			using func_t = decltype(&TESObjectREFR::GetLinkedRef);
@@ -493,6 +502,18 @@ namespace RE
 			return func(this);
 		}
 
+		// Moves a_item, a reference in the world, into this reference's
+		// inventory as a_count items, as a pickup does. An item that is not
+		// persistent goes in with a copy of its extra data. A persistent one
+		// hands over its own list, which then names it as the original
+		// reference, and gets AddChange(0x400).
+		void MoveRefIntoInventory(TESObjectREFR* a_item, std::uint32_t a_count)
+		{
+			using func_t = decltype(&TESObjectREFR::MoveRefIntoInventory);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MoveRefIntoInventory };
+			return func(this, a_item, a_count);
+		}
+
 		void MoveRefToNewSpace(TESObjectCELL* a_interior, TESWorldSpace* a_world)
 		{
 			using func_t = decltype(&TESObjectREFR::MoveRefToNewSpace);
@@ -505,6 +526,16 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::RemoveKeyword);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::RemoveKeyword };
 			return func(this, a_keyworld);
+		}
+
+		// For a world item placed from a leveled list, picks its base from that
+		// list again, records AddChange(0x80) and gives it fresh mods. The
+		// health it held stays unless the list entry sets one.
+		void RerollLeveledItemBase()
+		{
+			using func_t = decltype(&TESObjectREFR::RerollLeveledItemBase);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::RerollLeveledItemBase };
+			return func(this);
 		}
 
 		void SetAngleOnReference(const NiPoint3& a_point)

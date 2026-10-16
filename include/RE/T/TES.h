@@ -108,6 +108,16 @@ namespace RE
 		void ForEachReferenceInRange(const NiPoint3& a_origin, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
 		void ForEachReferenceInRange(const TESObjectREFR* a_ref, const float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR* a_ref)> a_callback);
 
+		// Whether a_cell is loaded: its state is kAttachQueued to kAttached, or
+		// with a_attachingOnly false also kLoading to kAttached. False for a null
+		// cell.
+		[[nodiscard]] bool IsCellLoaded(TESObjectCELL* a_cell, bool a_attachingOnly) const
+		{
+			using func_t = decltype(&TES::IsCellLoaded);
+			static REL::Relocation<func_t> func{ ID::TES::IsCellLoaded };
+			return func(this, a_cell, a_attachingOnly);
+		}
+
 		void UpdateMultiBoundVisibility(BSCullingProcess* a_cullingProcess)
 		{
 			using func_t = decltype(&TES::UpdateMultiBoundVisibility);

@@ -207,7 +207,7 @@ namespace RE::ID
 
 	namespace BGSCreatedObjectManager
 	{
-		inline constexpr REL::ID Singleton{ 2697789 };
+		inline constexpr REL::ID Singleton{ 4796296 };
 		inline constexpr REL::ID DecrementRef{ 2228455 };
 		inline constexpr REL::ID IncrementRef{ 2228454 };
 	}
@@ -273,6 +273,7 @@ namespace RE::ID
 		inline constexpr REL::ID AddItem2{ 2194160 };
 		inline constexpr REL::ID AddStack{ 2194191 };
 		inline constexpr REL::ID BuildFromContainer{ 2194158 };
+		inline constexpr REL::ID BuildFromContainer_Impl{ 2194196 };
 		inline constexpr REL::ID Clear{ 2194162 };
 		inline constexpr REL::ID ctor{ 2194153 };
 		inline constexpr REL::ID FindAndWriteStackDataForItem{ 2194179 };
@@ -418,6 +419,12 @@ namespace RE::ID
 	namespace BGSSaveGameBuffer
 	{
 		inline constexpr REL::ID SaveDataEndian{ 2228319 };
+	}
+
+	namespace BGSSaveLoadGame
+	{
+		inline constexpr REL::ID Singleton{ 2697789 };
+		inline constexpr REL::ID HasChangeFlags{ 2227898 };
 	}
 
 	namespace BGSSaveLoadManager
@@ -1133,6 +1140,7 @@ namespace RE::ID
 		inline constexpr REL::ID CompareList{ 2190098 };
 		inline constexpr REL::ID SetFavorite{ 2190188 };
 		inline constexpr REL::ID GetPrimitive{ 2190427 };
+		inline constexpr REL::ID RemoveByType{ 2190971 };
 	}
 
 	namespace ExtraTextDisplayData
@@ -2158,6 +2166,7 @@ namespace RE::ID
 	namespace TES
 	{
 		inline constexpr REL::ID Singleton{ 2698044 };
+		inline constexpr REL::ID IsCellLoaded{ 2192040 };
 		inline constexpr REL::ID UpdateMultiBoundVisibility{ 2192134 };
 	}
 
@@ -2222,6 +2231,7 @@ namespace RE::ID
 	namespace TESDataHandler
 	{
 		inline constexpr REL::ID Singleton{ 4796135 };
+		inline constexpr REL::ID BarterContainer{ 4796408 };
 		inline constexpr REL::ID AddFormToDataHandler{ 2192271 };
 		inline constexpr REL::ID BuildBarterContainer{ 2192332 };
 		inline constexpr REL::ID CheckModsLoaded{ 2192323 };
@@ -2263,6 +2273,7 @@ namespace RE::ID
 	namespace TESForm
 	{
 		inline constexpr REL::ID FormSortFunc{ 0 };  // 705530 - inlined?
+		inline constexpr REL::ID AddChangeForced{ 2193081 };
 		inline constexpr REL::ID AddCompileIndex{ 2193152 };
 		inline constexpr REL::ID AllForms{ 4796465 };
 		inline constexpr REL::ID AllFormsMapLock{ 4796476 };
@@ -2438,6 +2449,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetHandle{ 2201196 };
 		inline constexpr REL::ID GetHasOwner{ 2202622 };
 		inline constexpr REL::ID GetInventoryObjectCount{ 2200939 };
+		inline constexpr REL::ID GetItemHealthPercent{ 2202605 };
 		inline constexpr REL::ID GetLinkedRef{ 2202683 };
 		inline constexpr REL::ID GetLock{ 2202648 };
 		inline constexpr REL::ID GetWeightInContainer{ 2201001 };
@@ -2446,8 +2458,10 @@ namespace RE::ID
 		inline constexpr REL::ID IsCrimeToActivate{ 2201180 };
 		inline constexpr REL::ID IsLeveledCreature{ 2202655 };
 		inline constexpr REL::ID MarkAsDeleted{ 2201156 };
+		inline constexpr REL::ID MoveRefIntoInventory{ 2200917 };
 		inline constexpr REL::ID MoveRefToNewSpace{ 2201149 };
 		inline constexpr REL::ID RemoveKeyword{ 2200861 };
+		inline constexpr REL::ID RerollLeveledItemBase{ 2202658 };
 		inline constexpr REL::ID SetAngleOnReference{ 2201134 };
 		inline constexpr REL::ID SetLinkedRef{ 2202684 };
 		inline constexpr REL::ID SetLocationOnReference{ 2201138 };
@@ -2555,6 +2569,11 @@ namespace RE::ID
 		inline constexpr REL::ID DefaultWater{ 4799138 };
 		inline constexpr REL::ID GetSkyCell{ 2202924 };
 		inline constexpr REL::ID AdjustMapMarkerCoord{ 2202880 };
+	}
+
+	namespace TLS
+	{
+		inline constexpr REL::ID Index{ 2787938 };
 	}
 
 	namespace UI

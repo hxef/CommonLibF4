@@ -232,6 +232,15 @@ namespace RE
 			return func(this);
 		}
 
+		// Removes the extra of type a_type under the list's write lock. True
+		// when there was one. The game passes the type as a single byte.
+		bool RemoveByType(std::uint8_t a_type)
+		{
+			using func_t = decltype(&ExtraDataList::RemoveByType);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::RemoveByType };
+			return func(this, a_type);
+		}
+
 		// members
 		BaseExtraList           extraData;    // 08
 		mutable BSReadWriteLock extraRWLock;  // 20

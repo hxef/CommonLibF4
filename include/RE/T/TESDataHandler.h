@@ -65,6 +65,14 @@ namespace RE
 			return func(this, a_vendor);
 		}
 
+		// The copy BuildBarterContainer made last, or null. The global holds a
+		// reference to it, which ReleaseBarterContainer drops when it clears it.
+		[[nodiscard]] static TESObjectREFR* GetBarterContainer()
+		{
+			static REL::Relocation<TESObjectREFR**> container{ ID::TESDataHandler::BarterContainer };
+			return *container;
+		}
+
 		[[nodiscard]] bool CheckModsLoaded(bool a_everModded)
 		{
 			using func_t = decltype(&TESDataHandler::CheckModsLoaded);

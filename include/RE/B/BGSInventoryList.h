@@ -68,6 +68,18 @@ namespace RE
 			func(this, a_container);
 		}
 
+		// Fills *a_list with a_container's lines, the work of the constructor and
+		// BuildFromContainer, which call it under the list's write lock. A line
+		// whose base form has an object template goes in through AddStack as 1
+		// stack of 1 per count. Any other line is written straight in with its
+		// count. A leveled list line is skipped here. Always returns true.
+		static bool BuildFromContainer_Impl(const TESContainer* a_container, BGSInventoryList** a_list)
+		{
+			using func_t = decltype(&BGSInventoryList::BuildFromContainer_Impl);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryList::BuildFromContainer_Impl };
+			return func(a_container, a_list);
+		}
+
 		inline void Clear() noexcept
 		{
 			using func_t = decltype(&BGSInventoryList::Clear);
