@@ -756,6 +756,7 @@
 #include "RE/G/GridCell.h"
 #include "RE/G/GridCellArray.h"
 #include "RE/G/GunStateData.h"
+#include "RE/H/HUDAmmoCounter.h"
 #include "RE/H/HUDColorTypes.h"
 #include "RE/H/HUDCompassMarkerBase.h"
 #include "RE/H/HUDComponentBase.h"
