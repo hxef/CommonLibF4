@@ -6,6 +6,10 @@
 
 namespace RE
 {
+	// A script's AddForm puts a form at the end of arrayOfForms, or a
+	// reference's or a created form's ID in scriptAddedTempForms, and counts
+	// both kinds in scriptAddedFormCount. Reverting the list drops the temp
+	// forms and the last of arrayOfForms the count leaves.
 	class __declspec(novtable) BGSListForm :
 		public TESForm  // 00
 	{
@@ -66,6 +70,16 @@ namespace RE
 			}
 
 			return std::nullopt;
+		}
+
+		// The forms the plugins and DLL mods put in the list, without what a
+		// script's AddForm put there.
+		[[nodiscard]] std::span<TESForm* const> GetOwnForms() const noexcept
+		{
+			const std::uint32_t temps = scriptAddedTempForms ? scriptAddedTempForms->size() : 0;
+			const std::uint32_t added = scriptAddedFormCount > temps ? scriptAddedFormCount - temps : 0;
+			const std::uint32_t size = arrayOfForms.size();
+			return { arrayOfForms.data(), size > added ? size - added : 0 };
 		}
 
 		// members

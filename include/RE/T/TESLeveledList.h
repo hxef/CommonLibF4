@@ -15,7 +15,9 @@ namespace RE
 
 	// leveledLists holds every entry, sorted by level, those a script's
 	// AddForm put in among them, and baseListCount counts them all.
-	// scriptAddedLists points at the script's entries again, for the save.
+	// scriptAddedLists points at the script's entries again, for the save, and
+	// AddLeveledObject points them at the new place each time leveledLists
+	// grows.
 	class __declspec(novtable) TESLeveledList :
 		public BaseFormComponent  // 00
 	{
@@ -92,6 +94,13 @@ namespace RE
 			using func_t = decltype(&TESLeveledList::GetUseAll);
 			static REL::Relocation<func_t> func{ ID::TESLeveledList::GetUseAll };
 			return func(this);
+		}
+
+		// Whether a script's AddForm put a_entry, one of leveledLists, there.
+		[[nodiscard]] bool IsScriptAdded(const LEVELED_OBJECT* a_entry) const noexcept
+		{
+			const std::span added{ scriptAddedLists, scriptAddedLists ? scriptListCount : 0u };
+			return std::ranges::find(added, a_entry) != added.end();
 		}
 
 		// members
