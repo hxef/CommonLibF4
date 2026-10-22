@@ -25,6 +25,13 @@ namespace RE
 		using ModifiedCallback_t = void(Actor* a_actor, const ActorValueInfo& a_info, float a_originalValue, float a_delta, Actor* a_actorSource);
 		using DerivationFunction_t = float(const ActorValueOwner* a_actor, const ActorValueInfo& a_info);
 
+		// The OG std::function is 0x20 smaller, so every member from
+		// formEditorID on sits earlier there. Only formEditorID has an
+		// accessor. Read it through these.
+		[[nodiscard]] BSString& GetFormEditorIDString() noexcept { return RuntimeMember(this, formEditorID, 0x68); }
+
+		[[nodiscard]] const BSString& GetFormEditorIDString() const noexcept { return RuntimeMember(this, formEditorID, 0x68); }
+
 		// members
 		std::function<ModifiedCallback_t>               modifiedCallback;          // 048
 		BSString                                        formEditorID;              // 088

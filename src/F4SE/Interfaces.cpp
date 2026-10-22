@@ -6,6 +6,14 @@
 
 namespace F4SE
 {
+	std::string_view QueryInterface::GetSaveFolderName() const
+	{
+		// F4SE 0.7.1 added it. Older ones end their struct at GetPluginInfo.
+		if (F4SEVersion() < REL::Version{ 0, 7, 1, 0 })
+			return "Fallout4"sv;
+		return GetProxy().GetSaveFolderName();
+	}
+
 	bool MessagingInterface::RegisterListener(EventCallback* a_handler, std::string_view a_sender) const
 	{
 		const auto success = GetProxy().RegisterListener(GetPluginHandle(), a_sender.data(), reinterpret_cast<void*>(a_handler));
@@ -106,6 +114,18 @@ namespace F4SE
 			REX::ERROR("failed to register callback");
 		}
 		return success;
+	}
+
+	void TaskInterface::AddTaskPermanent(ITaskDelegate* a_task) const
+	{
+		// F4SE 0.7.0 added it with no new interface version, so only F4SE's own
+		// version tells. Older ones end their struct at AddUITask.
+		if (GetF4SEVersion() < REL::Version{ 0, 7, 0, 0 }) {
+			REX::ERROR("AddTaskPermanent needs F4SE 0.7.0 or later");
+			delete a_task;
+			return;
+		}
+		GetProxy().AddTaskPermanent(a_task);
 	}
 
 	void* TrampolineInterface::AllocateFromBranchPool(std::size_t a_size) const

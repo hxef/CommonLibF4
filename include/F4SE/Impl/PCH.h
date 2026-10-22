@@ -18,6 +18,8 @@ namespace Scaleform
 	using namespace std::literals;
 }
 
+#include "RE/Runtime.h"
+
 #include "RE/IDs.h"
 #include "RE/IDs_NiRTTI.h"
 #include "RE/IDs_RTTI.h"

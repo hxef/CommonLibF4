@@ -130,7 +130,7 @@ namespace F4SE
 		[[nodiscard]] REL::Version     F4SEVersion() const noexcept { return MakeVersion(GetProxy().f4seVersion); }
 		[[nodiscard]] PluginHandle     GetPluginHandle() const { return GetProxy().GetPluginHandle(); }
 		[[nodiscard]] std::uint32_t    GetReleaseIndex() const { return GetProxy().GetReleaseIndex(); }
-		[[nodiscard]] std::string_view GetSaveFolderName() const { return GetProxy().GetSaveFolderName(); }
+		[[nodiscard]] std::string_view GetSaveFolderName() const;
 		[[nodiscard]] bool             IsEditor() const noexcept { return GetProxy().isEditor != 0; }
 		[[nodiscard]] REL::Version     RuntimeVersion() const noexcept { return MakeVersion(GetProxy().runtimeVersion); }
 	};
@@ -419,7 +419,7 @@ namespace F4SE
 		void AddTask(std::function<void()> a_task) const { AddTask(new TaskDelegate(std::move(a_task))); }
 		void AddUITask(ITaskDelegate* a_task) const { GetProxy().AddUITask(a_task); }
 		void AddUITask(std::function<void()> a_task) const { AddUITask(new TaskDelegate(std::move(a_task))); }
-		void AddTaskPermanent(ITaskDelegate* a_task) const { GetProxy().AddTaskPermanent(a_task); }
+		void AddTaskPermanent(ITaskDelegate* a_task) const;
 		void AddTaskPermanent(std::function<void()> a_task) const { AddTaskPermanent(new TaskDelegate(std::move(a_task))); }
 	};
 
@@ -575,7 +575,9 @@ namespace F4SE
 #define F4SE_EXPORT extern "C" [[maybe_unused]] __declspec(dllexport)
 #define F4SE_PLUGIN_PRELOAD(...) F4SE_EXPORT bool F4SEPlugin_Preload(__VA_ARGS__)
 #define F4SE_PLUGIN_LOAD(...) F4SE_EXPORT bool F4SEPlugin_Load(__VA_ARGS__)
+#define F4SE_PLUGIN_QUERY(...) F4SE_EXPORT bool F4SEPlugin_Query(__VA_ARGS__)
 #define F4SE_PLUGIN_VERSION F4SE_EXPORT constinit F4SE::PluginVersionData F4SEPlugin_Version
 #define F4SEPluginPreload F4SE_PLUGIN_PRELOAD
 #define F4SEPluginLoad F4SE_PLUGIN_LOAD
+#define F4SEPluginQuery F4SE_PLUGIN_QUERY
 #define F4SEPluginVersion F4SE_PLUGIN_VERSION

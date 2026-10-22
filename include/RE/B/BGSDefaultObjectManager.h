@@ -21,10 +21,15 @@ namespace RE
 			return singleton.get();
 		}
 
+		// OG has 2 default objects fewer, so objectInitArray
+		// starts 0x10 earlier there. The enum numbers are the AE ones. On OG
+		// only kGold is checked, and a number after the 2 missing objects
+		// may name another object there.
 		[[nodiscard]] TESForm* GetDefaultObject(DEFAULT_OBJECT a_obj) const noexcept
 		{
-			assert(a_obj < DEFAULT_OBJECT::kTotal);
-			return objectInitArray[std::to_underlying(a_obj)] ?
+			assert(std::to_underlying(a_obj) < (IsOG() ? 0x18A : std::to_underlying(DEFAULT_OBJECT::kTotal)));
+			const auto& init = RuntimeMember(this, objectInitArray, 0xC70);
+			return init[std::to_underlying(a_obj)] ?
 			           objectArray[std::to_underlying(a_obj)] :
 			           nullptr;
 		}

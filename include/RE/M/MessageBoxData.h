@@ -27,8 +27,8 @@ namespace RE
 		REX::TEnumSet<UI_DEPTH_PRIORITY, std::uint32_t> menuDepth;          // 60
 		bool                                            modal;              // 64
 		bool                                            ensureUnique;       // 65
-		std::int32_t                                    cancelButtonIndex;  // 68
-		bool                                            hasCancelButton;    // 6C
+		std::int32_t                                    cancelButtonIndex;  // 68, none on OG
+		bool                                            hasCancelButton;    // 6C, none on OG
 	};
 	static_assert(sizeof(MessageBoxData) == 0x70);
 }

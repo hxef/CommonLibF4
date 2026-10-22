@@ -13,3 +13,19 @@ F4SE_PLUGIN_VERSION = []() noexcept {
     v.MinimumRequiredXSEVersion({ ${COMMONLIB_PLUGIN_XSE_VERSION_MAJOR}, ${COMMONLIB_PLUGIN_XSE_VERSION_MINOR}, ${COMMONLIB_PLUGIN_XSE_VERSION_PATCH}, 0 });
     return v;
 }();
+
+#if ${COMMONLIBF4_OPTION_OLD_GEN}
+// F4SE 0.7.x skips this plugin on the 1.10.980 and 1.10.984 next gen builds,
+// because the Version block above names only the latest game.
+// F4SE 0.6.x asks this before Load. F4SE 0.7.x never calls it.
+F4SE_PLUGIN_QUERY(const F4SE::QueryInterface* a_f4se, F4SE::PluginInfo* a_info)
+{
+    a_info->infoVersion = F4SE::PluginInfo::kVersion;
+    a_info->name = F4SEPlugin_Version.pluginName;
+    a_info->version = F4SEPlugin_Version.pluginVersion;
+    return !a_f4se->IsEditor() &&
+           a_f4se->RuntimeVersion() == F4SE::RUNTIME_1_10_163 &&
+           a_f4se->F4SEVersion() >= REL::Version{ 0, 6, 23, 0 } &&
+           RE::GetRuntime() == RE::Runtime::kOG;
+}
+#endif

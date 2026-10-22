@@ -134,6 +134,7 @@ namespace RE
 		std::uint32_t                          disablesCompanion;           // 1F8
 		std::uint32_t                          largeCacheRenderModeCount;   // 1FC
 		std::uint32_t                          movementToDirectionalCount;  // 200
+		// Everything from uiTimer on is the AE layout, the OG UI is 0x10 smaller.
 		BSTimer                                uiTimer;                     // 208
 		bool                                   menuSystemVisible;           // 258
 		bool                                   closingAllMenus;             // 259

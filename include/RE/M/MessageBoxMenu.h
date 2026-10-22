@@ -29,6 +29,23 @@ namespace RE
 			return func(this);
 		}
 
+		// The OG menu is 0x10 smaller. Only currentMessage has a place
+		// there, the cancel button members have none.
+		struct RuntimeData
+		{
+			MessageBoxData* currentMessage;
+		};
+
+		[[nodiscard]] RuntimeData& GetRuntimeData() noexcept
+		{
+			return *reinterpret_cast<RuntimeData*>(std::addressof(RuntimeMember(this, currentMessage, 0xE8)));
+		}
+
+		[[nodiscard]] const RuntimeData& GetRuntimeData() const noexcept
+		{
+			return *reinterpret_cast<const RuntimeData*>(std::addressof(RuntimeMember(this, currentMessage, 0xE8)));
+		}
+
 		// members
 		bool            hasCancelButton;    // E8
 		MessageBoxData* currentMessage;     // F0

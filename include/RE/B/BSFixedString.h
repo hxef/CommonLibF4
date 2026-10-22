@@ -195,7 +195,15 @@ namespace RE
 				}
 			}
 
-			void try_release() { BSStringPool::Entry::release(_data); }
+			// An empty string never looks up the game's Release. A static one is
+			// destroyed when the DLL unloads, and on a build without that ID the
+			// lookup would stop the game there.
+			void try_release()
+			{
+				if (_data) {
+					BSStringPool::Entry::release(_data);
+				}
+			}
 
 			static constexpr const value_type EMPTY[]{ 0 };
 

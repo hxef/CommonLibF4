@@ -30,7 +30,7 @@ namespace RE
 			return func(this, a_mult, a_now);
 		}
 
-		// members
+		// members, the AE layout. The OG size is not checked.
 		std::int64_t  highPrecisionInitTime;          // 00
 		float         clamp;                          // 08
 		float         clampRemainder;                 // 0C

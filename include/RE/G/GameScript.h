@@ -605,6 +605,7 @@ namespace RE
 		GameScript::ObjectBindPolicy                                        objectBindPolicy;               // 0288
 		BSTSmartPointer<BSScript::IStore>                                   scriptStore;                    // 0360
 		GameScript::FragmentSystem                                          fragmentSystem;                 // 0368
+		// Everything from profiler on is the AE layout, its BSTimer is not checked on OG.
 		GameScript::Profiler                                                profiler;                       // 04F0
 		GameScript::SavePatcher                                             savePatcher;                    // 0600
 		BSSpinLock                                                          freezeLock;                     // 0608

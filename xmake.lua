@@ -74,12 +74,17 @@ rule("commonlibf4.plugin", function()
                     conf.options.layout_dependent = true
                 end
             end
+            -- Adds F4SEPlugin_Query for 1.10.163. Off until the plugin is ported.
+            if conf.options.old_gen == nil then
+                conf.options.old_gen = false
+            end
         else
             conf.options = {
                 sig_scanning = false,
                 address_library = true,
                 no_struct_use = false,
-                layout_dependent = true
+                layout_dependent = true,
+                old_gen = false
             }
         end
 
@@ -87,6 +92,7 @@ rule("commonlibf4.plugin", function()
         target:set("configvar", "COMMONLIBF4_OPTION_ADDRESS_LIBRARY", tostring(conf.options.address_library))
         target:set("configvar", "COMMONLIBF4_OPTION_NO_STRUCT_USE", tostring(conf.options.no_struct_use))
         target:set("configvar", "COMMONLIBF4_OPTION_LAYOUT_DEPENDENT", tostring(conf.options.layout_dependent))
+        target:set("configvar", "COMMONLIBF4_OPTION_OLD_GEN", conf.options.old_gen and 1 or 0)
 
         if os.getenv("XSE_FO4_MODS_PATH") then
             target:set("installdir", path.join(os.getenv("XSE_FO4_MODS_PATH"), target:name()))

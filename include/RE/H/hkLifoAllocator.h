@@ -27,14 +27,14 @@ namespace RE
 		void Init(hkMemoryAllocator* a_slabAllocator, hkMemoryAllocator* a_largeAllocator, hkMemoryAllocator* a_internalAllocator)
 		{
 			using func_t = decltype(&hkLifoAllocator::Init);
-			static REL::Relocation<func_t> func{ REL::ID(1417289) };
+			static REL::Relocation<func_t> func{ RE::RuntimeID(1417289) };
 			return func(this, a_slabAllocator, a_largeAllocator, a_internalAllocator);
 		}
 
 		void Quit(hkMemoryAllocator** a_allocators)
 		{
 			using func_t = decltype(&hkLifoAllocator::Quit);
-			static REL::Relocation<func_t> func{ REL::ID(1058127) };
+			static REL::Relocation<func_t> func{ RE::RuntimeID(1058127) };
 			return func(this, a_allocators);
 		}
 

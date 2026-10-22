@@ -67,8 +67,13 @@ namespace F4SE
 				f4seVersion = a_intfc->F4SEVersion();
 				pluginHandle = a_intfc->GetPluginHandle();
 				releaseIndex = a_intfc->GetReleaseIndex();
-				pluginInfoAccessor = reinterpret_cast<const Impl::F4SEInterface*>(a_intfc)->GetPluginInfo;
+				// F4SE 0.6.22 added GetPluginInfo. Older ones end their struct before it.
+				if (f4seVersion >= REL::Version{ 0, 6, 22, 0 })
+					pluginInfoAccessor = reinterpret_cast<const Impl::F4SEInterface*>(a_intfc)->GetPluginInfo;
 				saveFolderName = a_intfc->GetSaveFolderName();
+
+				// Picks AE or OG before any plugin code looks up an address.
+				static_cast<void>(RE::GetRuntime());
 			});
 		}
 
@@ -124,13 +129,13 @@ namespace F4SE
 						info.trampolineSize += hookStore->GetSizeTrampoline();
 					}
 
-					auto& trampoline = REL::GetTrampoline();
-					if (const auto intfc = GetTrampolineInterface()) {
-						if (const auto mem = intfc->AllocateFromBranchPool(info.trampolineSize))
-							trampoline.set_trampoline(mem, info.trampolineSize);
-						else
-							trampoline.create(info.trampolineSize);
-					}
+					// With no trampoline interface the plugin allocates its own.
+					auto&      trampoline = REL::GetTrampoline();
+					const auto intfc = GetTrampolineInterface();
+					if (const auto mem = intfc ? intfc->AllocateFromBranchPool(info.trampolineSize) : nullptr)
+						trampoline.set_trampoline(mem, info.trampolineSize);
+					else
+						trampoline.create(info.trampolineSize);
 				});
 			}
 		}

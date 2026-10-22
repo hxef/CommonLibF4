@@ -16,10 +16,11 @@ namespace RE
 		using CompileFunction_t = bool(const std::uint16_t a_paramCount, const SCRIPT_PARAMETER* a_parameters, SCRIPT_LINE* a_scriptLine, ScriptCompileData* a_compileData);
 		using ExecuteFunction_t = bool(const SCRIPT_PARAMETER* a_parameters, const char* a_compiledParams, TESObjectREFR* a_refObject, TESObjectREFR* a_container, Script* a_script, ScriptLocals* a_scriptLocals, float& a_returnValue, std::uint32_t& a_offset);
 
-		[[nodiscard]] static auto GetConsoleFunctions()
+		// The console table holds 524 commands, the OG one 521.
+		[[nodiscard]] static std::span<SCRIPT_FUNCTION> GetConsoleFunctions()
 		{
-			static REL::Relocation<SCRIPT_FUNCTION(*)[523]> functions{ ID::SCRIPT_FUNCTION::ConsoleFunctions };
-			return std::span{ *functions };
+			static REL::Relocation<SCRIPT_FUNCTION*> functions{ ID::SCRIPT_FUNCTION::ConsoleFunctions };
+			return { functions.get(), IsOG() ? 521u : 524u };
 		}
 
 		static SCRIPT_FUNCTION* LocateConsoleCommand(const std::string_view a_longName)

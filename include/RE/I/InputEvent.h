@@ -24,8 +24,8 @@ namespace RE
 		virtual ~InputEvent() = default;  // 00
 
 		// add
-		virtual bool                 HasIDCode() const { return false; }  // 02
-		virtual const BSFixedString& QUserEvent() const;                  // 03
+		virtual bool                 HasIDCode() const { return false; }  // 01
+		virtual const BSFixedString& QUserEvent() const;                  // 02
 
 		template <class T>
 		[[nodiscard]] T* As() noexcept  //
