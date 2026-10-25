@@ -44,6 +44,18 @@ namespace RE
 		[[nodiscard]] bool             IsActive() const noexcept { return GetCompileIndex() != 0xFF; }
 		[[nodiscard]] bool             IsLight() const noexcept { return flags.all(RecordFlag::kSmallFile); };
 
+		// The form ID a record of this file has in the load order, from the ID
+		// the file writes for it, as the game works it out. The top byte
+		// becomes the file's slot, and a light file keeps the last 3 digits
+		// under FE and its light slot.
+		[[nodiscard]] TESFormID GetLoadOrderFormID(TESFormID a_formID) const noexcept
+		{
+			if (IsLight()) {
+				return 0xFE000000 | (static_cast<TESFormID>(smallFileCompileIndex) << 12) | (a_formID & 0xFFF);
+			}
+			return (static_cast<TESFormID>(compileIndex) << 24) | (a_formID & 0xFFFFFF);
+		}
+
 		[[nodiscard]] bool CloseTES(bool a_forceClose)
 		{
 			using func_t = decltype(&TESFile::CloseTES);
