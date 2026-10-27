@@ -576,7 +576,7 @@ namespace RE::ID
 
 	namespace BSGFxDisplayObject
 	{
-		inline constexpr RE::RuntimeID RemoveChild{ 2287327, 1122133 };
+		inline constexpr RE::RuntimeID dtor{ 2287327, 1122133 };
 	}
 
 	namespace BSGFxObject

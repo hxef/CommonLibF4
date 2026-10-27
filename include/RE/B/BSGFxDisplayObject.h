@@ -45,11 +45,13 @@ namespace RE
 			}
 		}
 
+		// 1.11.240 inlines the game's own copy into ID::BSGFxDisplayObject::dtor.
 		void RemoveChild(const BSGFxDisplayObject& a_child) const
 		{
-			using func_t = decltype(&BSGFxDisplayObject::RemoveChild);
-			static REL::Relocation<func_t> func{ ID::BSGFxDisplayObject::RemoveChild };
-			return func(this, a_child);
+			if (IsDisplayObject() && a_child.IsDisplayObject()) {
+				Scaleform::GFx::Value parent{ *this };
+				parent.Invoke("removeChild", nullptr, &a_child, 1);
+			}
 		}
 
 		// members
