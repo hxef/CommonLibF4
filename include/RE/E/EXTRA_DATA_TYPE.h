@@ -43,7 +43,7 @@ namespace RE
 		kCount,                         //
 		kHealth,                        // ExtraHealth
 		kRangeDistOverride,             //
-		kTimeLeft,                      //
+		kTimeLeft,                      // ExtraTimeLeft
 		kCharge,                        //
 		kLight,                         // ExtraLight
 		kLock,                          // ExtraLock

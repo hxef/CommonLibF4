@@ -181,6 +181,15 @@ namespace RE
 			return func(a_requiredItems, a_components, a_leftoversTo, a_scaled);
 		}
 
+		// Some of the numbers ExamineMenu adds from 9 on to its Flash movie's
+		// calls, see WorkbenchMenuBase::CodeObjectFunction.
+		enum class CodeObjectFunction : std::uint32_t
+		{
+			kCheckRequirements = 0x14,
+			kUpdateRequirements = 0x16,
+			kToggleFavoriteMod = 0x18
+		};
+
 		// members
 		ComponentBuilderFunctor                            componentFunctor;                    // 340
 		REX::TEnumSet<INSPECT_MODE_STATE, std::uint32_t>   inspectModeState;                    // 368

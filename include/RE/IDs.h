@@ -13,6 +13,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID CanBarterItem{ 2229789, 1360005 };
 		inline constexpr RE::RuntimeID CanUseIdle{ 2229592 };
 		inline constexpr RE::RuntimeID ClearAttackStates{ 2229773 };
+		inline constexpr RE::RuntimeID DrinkPotionCallback{ 2231345, 865490 };
 		inline constexpr RE::RuntimeID EndInterruptPackage{ 2229892 };
 		inline constexpr RE::RuntimeID ExitCover{ 2231166 };
 		inline constexpr RE::RuntimeID GetAimVector{ 2230378 };
@@ -92,6 +93,11 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID UnequipItem{ 2231399 };
 		inline constexpr RE::RuntimeID ToggleEquipInventoryItem{ 2231402, 332489 };
 		inline constexpr RE::RuntimeID CanEquip{ 2231405, 702912 };
+	}
+
+	namespace ActorMagicCaster
+	{
+		inline constexpr RE::RuntimeID AdjustActiveEffect{ 2226091, 940203 };
 	}
 
 	namespace ActorUtils
@@ -255,7 +261,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID GetInstanceData{ 2194072, 491493 };
 		inline constexpr RE::RuntimeID GetInventoryValue{ 2194099, 430292 };
 		inline constexpr RE::RuntimeID GetExtraDataAt{ 2194092 };
-		inline constexpr RE::RuntimeID MergeStacks{ 2194109 };
+		inline constexpr RE::RuntimeID MergeStacks{ 2194109, 1132179 };
 		inline constexpr RE::RuntimeID IsEquipped{ 2194086, 806787 };
 		inline constexpr RE::RuntimeID GetStackCount{ 2194107 };
 		inline constexpr RE::RuntimeID IsQuestObject{ 2194076 };
@@ -938,7 +944,7 @@ namespace RE::ID
 
 	namespace Calendar
 	{
-		inline constexpr RE::RuntimeID Singleton{ 4796378 };
+		inline constexpr RE::RuntimeID Singleton{ 4796378, 1444952 };
 		inline constexpr RE::RuntimeID GetDaysPassed{ 2228563 };
 	}
 
@@ -1041,6 +1047,13 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID SetTextEntryMode{ 4491359 };
 	}
 
+	namespace CookingMenu
+	{
+		inline constexpr RE::RuntimeID BuildConfirmed{ 2222896, 856717 };
+		inline constexpr RE::RuntimeID RegisterMenuComponents{ 2222901, 908748 };
+		inline constexpr RE::RuntimeID UpdateModChoiceList{ 2222905, 508147 };
+	}
+
 	namespace CurrentRadiationSourceCount
 	{
 		inline constexpr RE::RuntimeID GetEventSource{ 4803487 };
@@ -1089,9 +1102,10 @@ namespace RE::ID
 	namespace ExamineMenu
 	{
 		inline constexpr RE::RuntimeID BuildWeaponScrappingArray{ 2223077 };
+		inline constexpr RE::RuntimeID Call{ 2223002, 1461108 };
 		inline constexpr RE::RuntimeID GetSelectedIndex{ 2223022, 776503 };
 		inline constexpr RE::RuntimeID ShowConfirmMenu{ 2223081, 443081 };
-		inline constexpr RE::RuntimeID ConsumeSelectedItems{ 2223052 };
+		inline constexpr RE::RuntimeID ConsumeSelectedItems{ 2223052, 686586 };
 		inline constexpr RE::RuntimeID BuildConfirmed{ 2223013, 1396668 };
 		inline constexpr RE::RuntimeID GetBuildConfirmQuestion{ 2223057 };
 		inline constexpr RE::RuntimeID TryCreate{ 2223050, 900294 };
@@ -1563,6 +1577,7 @@ namespace RE::ID
 	namespace MagicCaster
 	{
 		inline constexpr RE::RuntimeID Cast{ 2226296, 1558908 };
+		inline constexpr RE::RuntimeID CastWithCallback{ 2226295, 695344 };
 	}
 
 	namespace MagicTarget
@@ -2156,7 +2171,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID QueueShowPipboy{ 2229288 };
 		inline constexpr RE::RuntimeID QueueUpdate3D{ 2229234 };
 		inline constexpr RE::RuntimeID QueueWeaponFire{ 2229186 };
-		inline constexpr RE::RuntimeID TaskUnpackFunc{ 2229323 };
+		inline constexpr RE::RuntimeID TaskUnpackFunc{ 2229323, 1546751 };
 	}
 
 	namespace TerminalHacked
@@ -2242,7 +2257,7 @@ namespace RE::ID
 
 	namespace TESDeathEvent
 	{
-		inline constexpr RE::RuntimeID GetEventSource{ 2201833 };
+		inline constexpr RE::RuntimeID GetEventSource{ 2201833, 1465690 };
 	}
 
 	namespace TESDescription
@@ -2431,6 +2446,7 @@ namespace RE::ID
 	{
 		inline constexpr RE::RuntimeID ActivateRef{ 2201147 };
 		inline constexpr RE::RuntimeID AddInventoryItem{ 2200949, 78185 };
+		inline constexpr RE::RuntimeID AddItemIfContainer{ 2200918, 1129665 };
 		inline constexpr RE::RuntimeID AddKeyword{ 2200860 };
 		inline constexpr RE::RuntimeID AddLockChange{ 2200731 };
 		inline constexpr RE::RuntimeID ApplyArtObject{ 2205200 };
@@ -2583,6 +2599,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID Singleton{ 4796314, 548587 };
 		inline constexpr RE::RuntimeID CustomRendererHasQuads{ 2284757 };
 		inline constexpr RE::RuntimeID GetMenuMapRWLock{ 2707105, 578487 };
+		inline constexpr RE::RuntimeID ProcessMessages{ 2284754, 239710 };
 		inline constexpr RE::RuntimeID RefreshCursor{ 2284772 };
 		inline constexpr RE::RuntimeID RegisterMenu{ 2284766 };
 		inline constexpr RE::RuntimeID UpdateControllerType{ 2284768 };
@@ -2623,6 +2640,8 @@ namespace RE::ID
 	namespace WorkbenchMenuBase
 	{
 		inline constexpr RE::RuntimeID UpdateOptimizedAutoBuildInv{ 2224955, 769581 };
+		inline constexpr RE::RuntimeID BuildSharedContainers{ 2224943, 589226 };
+		inline constexpr RE::RuntimeID ProcessMessage{ 2224938, 1403625 };
 		inline constexpr RE::RuntimeID QCurrentModChoiceData{ 2224958 };
 		inline constexpr RE::RuntimeID ShowBuildFailureMessage{ 2224959 };
 		inline constexpr RE::RuntimeID GetRequiredComponents{ 2224941, 271108 };
