@@ -44,7 +44,7 @@ namespace RE
 	{
 	public:
 		// Sets a_text to string a_id from a_file's .ILSTRINGS file, in the
-		// game's current language. An a_id of 0 gives an empty string.
+		// current game language. An a_id of 0 gives an empty string.
 		static void LookupByID(BSFixedStringCS& a_text, const TESFile* a_file, std::uint32_t a_id)
 		{
 			using func_t = decltype(&BGSLocalizedStringIL::LookupByID);

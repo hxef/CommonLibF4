@@ -32,6 +32,15 @@ namespace RE
 
 		[[nodiscard]] const BSString& GetFormEditorIDString() const noexcept { return RuntimeMember(this, formEditorID, 0x68); }
 
+		// The short name the menus show, such as on an item card's row, read
+		// by the engine's own function, since OG keeps it 0x40 earlier.
+		[[nodiscard]] const char* GetAbbreviation() const
+		{
+			using func_t = decltype(&ActorValueInfo::GetAbbreviation);
+			static REL::Relocation<func_t> func{ ID::ActorValueInfo::GetAbbreviation };
+			return func(this);
+		}
+
 		// members
 		std::function<ModifiedCallback_t>               modifiedCallback;          // 048
 		BSString                                        formEditorID;              // 088

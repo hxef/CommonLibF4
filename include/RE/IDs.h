@@ -118,6 +118,11 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID Singleton{ 2189587, 405390 };
 	}
 
+	namespace ActorValueInfo
+	{
+		inline constexpr RE::RuntimeID GetAbbreviation{ 2209719, 1573976 };
+	}
+
 	namespace AIFormulas
 	{
 		inline constexpr RE::RuntimeID GetBarterValue{ 2208969, 984344 };
@@ -1754,7 +1759,7 @@ namespace RE::ID
 
 	namespace nsStatsMenuUtils
 	{
-		inline constexpr RE::RuntimeID GetEffectDisplayInfo{ 2224586 };
+		inline constexpr RE::RuntimeID GetEffectDisplayInfo{ 2224586, 294691 };
 	}
 
 	namespace PerkPointIncreaseEvent
@@ -1950,7 +1955,7 @@ namespace RE::ID
 
 		inline constexpr RE::RuntimeID Singleton{ 4798212, 412034 };
 		inline constexpr RE::RuntimeID GetPlayerHandle{ 2698072, 522947 };
-		inline constexpr RE::RuntimeID GetDifficultyLevel{ 2233056 };
+		inline constexpr RE::RuntimeID GetDifficultyLevel{ 2233056, 922962 };
 		inline constexpr RE::RuntimeID IsGodMode{ 2232986 };
 		inline constexpr RE::RuntimeID IsHolotapePlaying{ 2233206 };
 		inline constexpr RE::RuntimeID IsImmortal{ 2232988 };
@@ -2227,7 +2232,7 @@ namespace RE::ID
 
 	namespace TESCondition
 	{
-		inline constexpr RE::RuntimeID IsTrue{ 2211989 };
+		inline constexpr RE::RuntimeID IsTrue{ 2211989, 1275731 };
 		inline constexpr RE::RuntimeID IsTrueForAllButFunction{ RE::NO_ID };  // 1182457 - inlined
 		inline constexpr RE::RuntimeID ClearAllConditionItems{ 2211988 };
 	}

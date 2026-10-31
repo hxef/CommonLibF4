@@ -45,7 +45,7 @@ namespace RE
 			}
 		}
 
-		// 1.11.240 inlines the game's own copy into ID::BSGFxDisplayObject::dtor.
+		// 1.11.240 inlines the engine's own copy into ID::BSGFxDisplayObject::dtor.
 		void RemoveChild(const BSGFxDisplayObject& a_child) const
 		{
 			if (IsDisplayObject() && a_child.IsDisplayObject()) {

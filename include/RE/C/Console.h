@@ -22,7 +22,7 @@ namespace RE
 		}
 
 		// Runs the commands ExecuteCommand has queued. ExecuteCommand only parses
-		// what was typed and puts it in a queue, and the game's update drains
+		// what was typed and puts it in a queue, and the engine's update drains
 		// the queue through this, the ForEachRef form included, so everything a
 		// console command does happens inside this call and on its thread.
 		static void RunQueuedCommands()

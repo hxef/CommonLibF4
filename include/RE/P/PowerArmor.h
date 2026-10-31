@@ -34,7 +34,7 @@ namespace RE
 			virtual ~EventHandler();  // 00
 
 			// override
-			// Each of the game's functions sits in its own sink's table, so it
+			// Each of the engine's functions sits in its own sink's table, so it
 			// takes that sink part of the object as this.
 			virtual BSEventNotifyControl ProcessEvent(const TESHitEvent& a_event, BSTEventSource<TESHitEvent>* a_source) override  // 01
 			{

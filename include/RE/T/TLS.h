@@ -4,7 +4,7 @@
 
 namespace RE
 {
-	// The game's own block of per thread data.
+	// The engine's own block of per thread data.
 	class TLS
 	{
 	public:
@@ -15,7 +15,7 @@ namespace RE
 			kApplyingSave = 1 << 3        // this thread is applying a save's changes to forms
 		};
 
-		// The running thread's block, found through the slot the game's own TLS
+		// The running thread's block, found through the slot the engine's own TLS
 		// index names, as the game reads it.
 		[[nodiscard]] static TLS* GetSingleton()
 		{

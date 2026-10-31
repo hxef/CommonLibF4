@@ -78,7 +78,7 @@ namespace RE
 
 			// override (TBO_InstanceData)
 			//
-			// Each runs the game's own function by its ID, so a call the
+			// Each runs the engine's own function by its ID, so a call the
 			// compiler makes without the vtable, as on TESObjectWEAP::weaponData,
 			// gets the same answer as a call through it.
 			BGSKeywordForm* GetKeywordData() const override  // 01

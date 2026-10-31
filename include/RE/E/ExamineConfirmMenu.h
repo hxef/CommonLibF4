@@ -77,7 +77,7 @@ namespace RE
 		static_assert(sizeof(InitData) == 0x20);
 
 		// The box a bench puts up before it builds: a row per required item,
-		// with the components it takes. Built by the game's own constructor,
+		// with the components it takes. Built by the engine's own constructor,
 		// the way TryCreate builds it, so only Create makes one.
 		class __declspec(novtable) InitDataBuild :
 			public InitData  // 00

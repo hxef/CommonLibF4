@@ -195,7 +195,7 @@ namespace RE
 				}
 			}
 
-			// An empty string never looks up the game's Release. A static one is
+			// An empty string never looks up the engine's Release. A static one is
 			// destroyed when the DLL unloads, and on a build without that ID the
 			// lookup would stop the game there.
 			void try_release()

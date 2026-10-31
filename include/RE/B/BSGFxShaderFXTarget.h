@@ -46,7 +46,7 @@ namespace RE
 		// override
 		virtual BSEventNotifyControl ProcessEvent(const ApplyColorUpdateEvent& a_event, BSTEventSource<ApplyColorUpdateEvent>* a_source) override  // 01
 		{
-			// The game's function sits in the sink's table, so it takes the
+			// The engine's function sits in the sink's table, so it takes the
 			// sink part of the object, at 0x50, as this.
 			using func_t = BSEventNotifyControl (*)(BSTEventSink<ApplyColorUpdateEvent>*, const ApplyColorUpdateEvent&, BSTEventSource<ApplyColorUpdateEvent>*);
 			static REL::Relocation<func_t> func{ ID::BSGFxShaderFXTarget::ProcessEvent };
@@ -104,7 +104,7 @@ namespace RE
 	private:
 		void ctor_shared()
 		{
-			// Full brightness, as the game's own constructor starts it.
+			// Full brightness, as the engine's own constructor starts it.
 			shaderFX.colorBrightness = 1.0F;
 
 			if (HasMember("bUseShadedBackground")) {
