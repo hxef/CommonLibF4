@@ -1410,6 +1410,54 @@ namespace RE::BSScript
 		}
 	}
 
+	// The arguments of a call the VM's DispatchStaticCall and DispatchMethodCall
+	// queue, filled by a_fill as the VM asks. The VM takes a std::function, but
+	// it only reads the call object out of it, through the 3rd virtual of which
+	// it fills the arguments, and never copies it. AE's std::function is 0x40
+	// bytes with that object at +0x38. OG was built with an older compiler,
+	// whose std::function is 0x20 bytes with it at +0x18. get() hands the VM an
+	// object with the call object where its runtime reads it.
+	class DispatchArguments
+	{
+	public:
+		using Fill = BSTThreadScrapFunction<bool(BSScrapArray<Variable>&)>;
+
+		explicit DispatchArguments(Fill a_fill) noexcept :
+			_fill(std::move(a_fill))
+		{
+			_function[(IsOG() ? 0x18 : 0x38) / sizeof(Call*)] = std::addressof(_call);
+		}
+
+		DispatchArguments(const DispatchArguments&) = delete;
+		DispatchArguments& operator=(const DispatchArguments&) = delete;
+
+		[[nodiscard]] const Fill& get() const noexcept
+		{
+			return *reinterpret_cast<const Fill*>(_function);
+		}
+
+	private:
+		class Call final
+		{
+		public:
+			explicit Call(const Fill& a_fill) noexcept :
+				_fill(a_fill)
+			{}
+
+			virtual Call* Copy(void*) { return nullptr; }                              // 00
+			virtual Call* Move(void*) { return nullptr; }                              // 01
+			virtual bool  Invoke(BSScrapArray<Variable>& a_args) { return _fill(a_args); }  // 02
+
+		private:
+			const Fill& _fill;
+		};
+
+		Fill  _fill;
+		Call  _call{ _fill };
+		Call* _function[sizeof(Fill) / sizeof(Call*)]{};
+	};
+	static_assert(sizeof(DispatchArguments::Fill) == 0x40);
+
 	template <class... Args>
 	bool IVirtualMachine::DispatchStaticCall(
 		const BSFixedString&                          a_objName,
@@ -1417,14 +1465,11 @@ namespace RE::BSScript
 		const BSTSmartPointer<IStackCallbackFunctor>& a_callback,
 		Args... a_args)
 	{
-		return DispatchStaticCall(
-			a_objName,
-			a_funcName,
-			[&](BSScrapArray<Variable>& a_out) {
-				a_out = detail::PackVariables(a_args...);
-				return true;
-			},
-			a_callback);
+		const DispatchArguments arguments{ [&](BSScrapArray<Variable>& a_out) {
+			a_out = detail::PackVariables(a_args...);
+			return true;
+		} };
+		return DispatchStaticCall(a_objName, a_funcName, arguments.get(), a_callback);
 	}
 
 	template <class... Args>
@@ -1435,14 +1480,10 @@ namespace RE::BSScript
 		const BSTSmartPointer<IStackCallbackFunctor>& a_callback,
 		Args... a_args)
 	{
-		return DispatchMethodCall(
-			a_objHandle,
-			a_objName,
-			a_funcName,
-			[&](BSScrapArray<Variable>& a_out) {
-				a_out = detail::PackVariables(a_args...);
-				return true;
-			},
-			a_callback);
+		const DispatchArguments arguments{ [&](BSScrapArray<Variable>& a_out) {
+			a_out = detail::PackVariables(a_args...);
+			return true;
+		} };
+		return DispatchMethodCall(a_objHandle, a_objName, a_funcName, arguments.get(), a_callback);
 	}
 }

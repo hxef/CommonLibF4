@@ -790,9 +790,9 @@ namespace RE::ID
 
 	namespace BSScript_Object
 	{
-		inline constexpr RE::RuntimeID DecRef{ 2314437 };
+		inline constexpr RE::RuntimeID DecRef{ 2314437, 541793 };
 		inline constexpr RE::RuntimeID GetHandle{ 2314431 };
-		inline constexpr RE::RuntimeID IncRef{ 2314436 };
+		inline constexpr RE::RuntimeID IncRef{ 2314436, 461710 };
 	}
 
 	namespace BSScript_ObjectTypeInfo
