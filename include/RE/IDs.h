@@ -1059,6 +1059,12 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID UpdateModChoiceList{ 2222905, 508147 };
 	}
 
+	namespace CrosshairPickData
+	{
+		inline constexpr RE::RuntimeID GetTargetHandle{ 2219544, 345895 };
+		inline constexpr RE::RuntimeID Singleton{ 4797738, 1261078 };
+	}
+
 	namespace CurrentRadiationSourceCount
 	{
 		inline constexpr RE::RuntimeID GetEventSource{ 4803487 };
@@ -1422,6 +1428,11 @@ namespace RE::ID
 	namespace HUDQuickContainerDataModel
 	{
 		inline constexpr RE::RuntimeID AddItemRows{ 2221647, 793418 };
+	}
+
+	namespace HUDRolloverModel
+	{
+		inline constexpr RE::RuntimeID Update{ 2222048, 1258500 };
 	}
 
 	namespace IAnimationGraphManagerHolder
