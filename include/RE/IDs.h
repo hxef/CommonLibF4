@@ -2477,6 +2477,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID GetDistanceSqFromPoint{ 2201173 };
 		inline constexpr RE::RuntimeID GetDistanceSqFromReference{ 2201175 };
 		inline constexpr RE::RuntimeID GetEditorDead{ 2200781 };
+		inline constexpr RE::RuntimeID GetFactionOwner{ 2202618, 791856 };
 		inline constexpr RE::RuntimeID GetOwner{ 2202616 };
 		inline constexpr RE::RuntimeID GetGoldAmount{ 2200923, 564356 };
 		inline constexpr RE::RuntimeID GetHandle{ 2201196, 1573130 };

@@ -50,6 +50,7 @@ namespace RE
 	class REFR_LOCK;
 	class ShaderReferenceEffect;
 	class TargetEntry;
+	class TESFaction;
 	class TESModel;
 	class TrapData;
 	class TrapEntry;
@@ -382,6 +383,13 @@ namespace RE
 		{
 			using func_t = decltype(&TESObjectREFR::GetEditorDead);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetEditorDead };
+			return func(this);
+		}
+
+		[[nodiscard]] TESFaction* GetFactionOwner() const
+		{
+			using func_t = decltype(&TESObjectREFR::GetFactionOwner);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetFactionOwner };
 			return func(this);
 		}
 
