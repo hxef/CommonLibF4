@@ -2311,7 +2311,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID AllFormsMapLock{ 4796476, 691815 };
 		inline constexpr RE::RuntimeID AllFormsByEditorID{ 4796466, 642758 };
 		inline constexpr RE::RuntimeID AllFormsEditorIDMapLock{ 4796477, 910917 };
-		inline constexpr RE::RuntimeID GetFile{ 2193103 };
+		inline constexpr RE::RuntimeID GetFile{ 2193103, 1376557 };
 		inline constexpr RE::RuntimeID GetFormByNumericID{ 2193092 };
 		inline constexpr RE::RuntimeID GetFormEnumString{ 1309967 };
 		inline constexpr RE::RuntimeID GetFormTypeFromString{ 2193108 };
