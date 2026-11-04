@@ -304,6 +304,15 @@ namespace RE
 			return func(a_allowReEntry);
 		}
 
+		// The components scrapping a_refr gives, its mods' recipes and its count
+		// included. a_rewards points at the array that gets them.
+		inline void BuildScrapRewards(TESObjectREFR* a_refr, bool a_ownRecipeOnly, BSScrapArray<BSTTuple<TESBoundObject*, std::uint32_t>>** a_rewards)
+		{
+			using func_t = decltype(&Workshop::BuildScrapRewards);
+			static REL::Relocation<func_t> func{ ID::Workshop::BuildScrapRewards };
+			return func(a_refr, a_ownRecipeOnly, a_rewards);
+		}
+
 		inline void ScrapReference(const ContextData& a_context, BSPointerHandleSmartPointer<BSPointerHandleManagerInterface<TESObjectREFR, HandleManager>>& a_scrapRef, BSTArray<BSTTuple<TESBoundObject*, std::uint32_t>>* a_rewards)
 		{
 			using func_t = decltype(&Workshop::ScrapReference);

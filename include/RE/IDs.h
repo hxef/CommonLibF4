@@ -1112,7 +1112,8 @@ namespace RE::ID
 
 	namespace ExamineMenu
 	{
-		inline constexpr RE::RuntimeID BuildWeaponScrappingArray{ 2223077 };
+		inline constexpr RE::RuntimeID BuildWeaponScrappingArray{ 2223077, 646841 };
+		inline constexpr RE::RuntimeID ScrapConfirmed{ 2223003, 1016080 };
 		inline constexpr RE::RuntimeID Call{ 2223002, 1461108 };
 		inline constexpr RE::RuntimeID GetSelectedIndex{ 2223022, 776503 };
 		inline constexpr RE::RuntimeID ShowConfirmMenu{ 2223081, 443081 };
@@ -2679,6 +2680,7 @@ namespace RE::ID
 			inline constexpr RE::RuntimeID FindAndSetSelectedNode{ 2195022 };
 		}
 
+		inline constexpr RE::RuntimeID BuildScrapRewards{ 2195268, 1107196 };
 		inline constexpr RE::RuntimeID FindNearestValidWorkshop{ 2194970 };
 		inline constexpr RE::RuntimeID FreeBuild{ 2194924 };
 		inline constexpr RE::RuntimeID GetSelectedWorkshopMenuNode{ 2195024 };
@@ -2690,7 +2692,10 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID RegisterForItemPlaced{ 2194926 };
 		inline constexpr RE::RuntimeID RegisterForWorkshopModeEvent{ 2194946 };
 		inline constexpr RE::RuntimeID RequestExitWorkshop{ 2195135 };
-		inline constexpr RE::RuntimeID ScrapReference{ 2195125 };
+		inline constexpr RE::RuntimeID RequestScrap{ 2195194, 1402505 };
+		inline constexpr RE::RuntimeID ScrapReference{ 2195125, 636327 };
+		inline constexpr RE::RuntimeID ScrapRewardCount{ 2194969, 1531126 };
+		inline constexpr RE::RuntimeID ScrapRewardCountForRef{ 2194968, 919354 };
 		inline constexpr RE::RuntimeID SetSelectedEditItem{ 2195119 };
 		inline constexpr RE::RuntimeID StartWorkshop{ 2195134 };
 		inline constexpr RE::RuntimeID ToggleEditMode{ 2195130 };
@@ -2715,6 +2720,7 @@ namespace RE::ID
 	inline constexpr RE::RuntimeID NiMalloc{ 2268535 };
 	inline constexpr RE::RuntimeID RTDynamicCast{ 4818455 };
 	inline constexpr RE::RuntimeID IsPlayerInDialogue{ 2188686 };
+	inline constexpr RE::RuntimeID ScrapRewardCount{ 2209090, 1196085 };
 }
 
 namespace Scaleform::ID

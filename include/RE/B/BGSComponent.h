@@ -24,4 +24,14 @@ namespace RE
 		TESGlobal*     modScrapScalar;  // A0
 	};
 	static_assert(sizeof(BGSComponent) == 0xA8);
+
+	// How many of a_form scrapping gives for a_count in a recipe. Scrap reward perks always apply,
+	// a_applyBase also applies fBuildableScrapCountMultBase, and a_skipScalar
+	// skips a component's scrap scalar.
+	inline std::uint32_t ScrapRewardCount(TESForm* a_form, std::uint32_t a_count, bool a_applyBase, bool a_skipScalar)
+	{
+		using func_t = decltype(&ScrapRewardCount);
+		static REL::Relocation<func_t> func{ ID::ScrapRewardCount };
+		return func(a_form, a_count, a_applyBase, a_skipScalar);
+	}
 }
