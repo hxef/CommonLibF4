@@ -1670,6 +1670,7 @@ namespace RE::ID
 
 	namespace MessageBoxMenu
 	{
+		inline constexpr RE::RuntimeID OnButtonPress{ 4486575, 466970 };
 		inline constexpr RE::RuntimeID ShowMessage{ 2249469, 442479 };
 	}
 

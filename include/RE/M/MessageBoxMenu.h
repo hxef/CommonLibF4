@@ -22,6 +22,13 @@ namespace RE
 		virtual void               MapCodeObjectFunctions() override;    // 02
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage&) override;  // 03
 
+		void OnButtonPress(std::uint8_t a_button)
+		{
+			using func_t = decltype(&MessageBoxMenu::OnButtonPress);
+			static REL::Relocation<func_t> func{ ID::MessageBoxMenu::OnButtonPress };
+			return func(this, a_button);
+		}
+
 		void ShowMessage()
 		{
 			using func_t = decltype(&MessageBoxMenu::ShowMessage);
