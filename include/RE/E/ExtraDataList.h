@@ -154,6 +154,15 @@ namespace RE
 			return func(this, a_form);
 		}
 
+		// The count in this list's ExtraCount, 1 where there is none. A
+		// dropped pile of the same item is 1 reference with this count.
+		[[nodiscard]] inline std::int16_t GetCount() const
+		{
+			using func_t = decltype(&ExtraDataList::GetCount);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::GetCount };
+			return func(this);
+		}
+
 		inline float GetHealthPerc()
 		{
 			using func_t = decltype(&ExtraDataList::GetHealthPerc);
