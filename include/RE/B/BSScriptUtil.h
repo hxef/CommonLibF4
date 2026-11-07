@@ -323,6 +323,7 @@ namespace RE::BSScript
 					effect_type<T> ||
 					alias_type<T> ||
 					object_pointer_type<T> ||
+					inventory_type<T> ||
 					string_type<T> ||
 					integral_type<T> ||
 					floating_point_type<T> ||
