@@ -698,6 +698,12 @@ namespace RE::BSScript
 	template <detail::inventory_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
+		// An empty item is None, as a null form is.
+		if (!a_val.Reference() && (!a_val.Container() || !a_val.UniqueID())) {
+			a_var = nullptr;
+			return;
+		}
+
 		const auto success = [&]() {
 			if (a_val.Reference()) {
 				detail::PackVariable(a_var, a_val.Reference());
@@ -959,6 +965,11 @@ namespace RE::BSScript
 	template <detail::inventory_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
+		// None is a valid ObjectReference, as it is a valid Form.
+		if (a_var.is<std::nullptr_t>() || (a_var.is<Object>() && get<Object>(a_var) == nullptr)) {
+			return T();
+		}
+
 		const auto result = [&]() -> std::optional<T> {
 			if (!a_var.is<Object>()) {
 				assert(false);
