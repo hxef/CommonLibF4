@@ -779,36 +779,36 @@ namespace RE::ID
 
 	namespace BSScript_Internal_NativeFunctionBase
 	{
-		inline constexpr RE::RuntimeID Call{ 2314780 };
+		inline constexpr RE::RuntimeID Call{ 2314780, 571037 };
 	}
 
 	namespace BSScript_Internal_Stack
 	{
-		inline constexpr RE::RuntimeID GetPageForFrame{ 2314680 };
-		inline constexpr RE::RuntimeID GetStackFrameVariable{ 2314681 };
+		inline constexpr RE::RuntimeID GetPageForFrame{ 2314680, 1429302 };
+		inline constexpr RE::RuntimeID GetStackFrameVariable{ 2314681, 897539 };
 	}
 
 	namespace BSScript_Object
 	{
 		inline constexpr RE::RuntimeID DecRef{ 2314437, 541793 };
-		inline constexpr RE::RuntimeID GetHandle{ 2314431 };
+		inline constexpr RE::RuntimeID GetHandle{ 2314431, 1452752 };
 		inline constexpr RE::RuntimeID IncRef{ 2314436, 461710 };
 	}
 
 	namespace BSScript_ObjectTypeInfo
 	{
-		inline constexpr RE::RuntimeID dtor{ 2314513 };
+		inline constexpr RE::RuntimeID dtor{ 2314513, 1047917 };
 	}
 
 	namespace BSScript_ObjectBindPolicy
 	{
-		inline constexpr RE::RuntimeID BindObject{ 2314370 };
-		inline constexpr RE::RuntimeID UnbindObject{ 2314372 };
+		inline constexpr RE::RuntimeID BindObject{ 2314370, 709728 };
+		inline constexpr RE::RuntimeID UnbindObject{ 2314372, 522763 };
 	}
 
 	namespace BSScript_ZeroFunctionArguments
 	{
-		inline constexpr RE::RuntimeID ZeroFunctionArguments{ 2314598 };
+		inline constexpr RE::RuntimeID ZeroFunctionArguments{ 2314598, 704975 };
 	}
 
 	namespace BSShaderProperty
@@ -1222,7 +1222,7 @@ namespace RE::ID
 		namespace HandlePolicy
 		{
 			inline constexpr RE::RuntimeID DropSaveLoadRemapData{ 2249995 };
-			inline constexpr RE::RuntimeID GetInventoryObjFromHandle{ 2249989 };
+			inline constexpr RE::RuntimeID GetInventoryObjFromHandle{ 2249989, 66597 };
 			inline constexpr RE::RuntimeID UpdatePersistence{ 2249991 };
 		}
 
@@ -1233,14 +1233,14 @@ namespace RE::ID
 
 		namespace GameVM
 		{
-			inline constexpr RE::RuntimeID Singleton{ 4796420 };
+			inline constexpr RE::RuntimeID Singleton{ 4796420, 996227 };
 			inline constexpr RE::RuntimeID QueuePostRenderCall{ 2251314 };
 			inline constexpr RE::RuntimeID RegisterForAllGameEvents{ 2251353 };
-			inline constexpr RE::RuntimeID SendEventToObjectAndRelated{ 2251344 };
+			inline constexpr RE::RuntimeID SendEventToObjectAndRelated{ 2251344, 367992 };
 		}
 
 		inline constexpr RE::RuntimeID LogFormError{ 2251028 };
-		inline constexpr RE::RuntimeID BindCObject{ 2249771 };
+		inline constexpr RE::RuntimeID BindCObject{ 2249773, 81787 };
 	}
 
 	namespace GameUIModel
