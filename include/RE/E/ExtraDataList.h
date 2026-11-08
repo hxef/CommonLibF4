@@ -143,6 +143,16 @@ namespace RE
 			func(this, a_form);
 		}
 
+		// Writes a_uid as this list's unique ID, with a_owner the form ID of
+		// the container that gave it. With 0 and 0 it removes the entry. It
+		// takes only the list's own lock.
+		inline void SetUniqueID(std::uint16_t a_uid, std::uint32_t a_owner)
+		{
+			using func_t = decltype(&ExtraDataList::SetUniqueID);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetUniqueID };
+			func(this, a_uid, a_owner);
+		}
+
 		// The item's health in points: its full health times the fraction in
 		// this list's ExtraHealth, or the full health where there is none. The
 		// full health is the instance data's where that gives one, a_form's

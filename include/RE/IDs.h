@@ -1155,6 +1155,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID SetDisplayNameFromInstanceData{ 2190179 };
 		inline constexpr RE::RuntimeID SetOverrideName{ 2190167 };
 		inline constexpr RE::RuntimeID SetStartingWorldOrCell{ 2190506 };
+		inline constexpr RE::RuntimeID SetUniqueID{ 2190549, 459599 };
 		inline constexpr RE::RuntimeID GetHealth{ 2190225 };
 		inline constexpr RE::RuntimeID GetCount{ 2190227, 1512810 };
 		inline constexpr RE::RuntimeID GetHealthPerc{ 2190226, 196530 };
