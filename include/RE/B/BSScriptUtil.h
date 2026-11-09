@@ -625,8 +625,9 @@ namespace RE::BSScript
 				return false;
 			}
 
+			// Exactly T's own type, as for a form.
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, true) &&
 				vm->CreateObject(typeInfo->name, object) &&
 				object) {
 				auto& binding = vm->GetObjectBindPolicy();
@@ -675,8 +676,9 @@ namespace RE::BSScript
 				return false;
 			}
 
+			// Exactly T's own type, as for a form.
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, true) &&
 				vm->CreateObject(typeInfo->name, object) &&
 				object) {
 				auto& binding = vm->GetObjectBindPolicy();
@@ -730,8 +732,10 @@ namespace RE::BSScript
 			}
 
 			const auto              handle = GameScript::HandlePolicy::GetHandleForInventoryID(uniqueID, container.GetFormID());
+			// Exactly ObjectReference, never the script of the item's base
+			// bound to the same handle, as for a form.
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, objInfo.name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, objInfo.name.c_str(), false, object, true) &&
 				vm->CreateObject(objInfo.name, object)) {
 				GameScript::BindCObject(object, a_val, *vm);
 			}
