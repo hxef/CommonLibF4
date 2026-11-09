@@ -41,7 +41,7 @@ namespace RE::BSScript
 		[[nodiscard]] consteval auto make_structure_tag(
 			REX::TStaticString<CharT, N1> a_lhs,
 			REX::TStaticString<CharT, N2> a_rhs) noexcept
-			-> REX::TStaticString<CharT, N1 + 1 + N2>
+			-> REX::TStaticString<CharT, N1 + 1 + N2 + 1>
 		{
 			char buf[a_lhs.length() + 1 + a_rhs.length() + 1]{ '\0' };
 			std::copy_n(a_lhs.data(), a_lhs.length(), buf);
@@ -55,10 +55,11 @@ namespace RE::BSScript
 	class structure_wrapper
 	{
 	private:
+		// The VM reads the name as a C string, so _full keeps its closing zero.
 		static constexpr REX::TStaticString _full = detail::make_structure_tag(Object, Structure);
 
 	public:
-		static constexpr std::string_view name{ _full.data(), _full.length() };
+		static constexpr std::string_view name{ _full.data(), _full.length() - 1 };
 
 		structure_wrapper()
 		{
@@ -1385,7 +1386,7 @@ namespace RE::BSScript
 			Args...>;
 
 	template <class F>
-	void IVirtualMachine::BindNativeMethod(
+	bool IVirtualMachine::BindNativeMethod(
 		std::string_view    a_object,
 		std::string_view    a_function,
 		F                   a_func,
@@ -1405,6 +1406,8 @@ namespace RE::BSScript
 		if (success && a_taskletCallable) {
 			SetCallableFromTasklets(a_object.data(), a_function.data(), *a_taskletCallable);
 		}
+
+		return success;
 	}
 
 	namespace detail
