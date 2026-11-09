@@ -997,7 +997,8 @@ namespace RE::BSScript
 			auto&      policy = vm->GetObjectHandlePolicy();
 			const auto handle = obj->GetHandle();
 			if (!policy.HandleIsType(GetVMTypeID<T>(), handle)) {
-				return std::nullopt;
+				// The VM checked the type, so this handle is of an item that is gone, which reads as None.
+				return T();
 			}
 
 			return T(handle);
