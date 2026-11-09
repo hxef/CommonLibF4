@@ -573,8 +573,10 @@ namespace RE::BSScript
 				return false;
 			}
 
+			// Exactly T's own type, never a type derived from it, since the VM
+			// assigns an object only to a variable of the very same type.
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, true) &&
 				vm->CreateObject(typeInfo->name, object) &&
 				object) {
 				auto& binding = vm->GetObjectBindPolicy();
