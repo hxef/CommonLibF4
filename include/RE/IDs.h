@@ -55,6 +55,7 @@ namespace RE::ID
 		inline constexpr RE::RuntimeID SetGunState{ 2231175 };
 		inline constexpr RE::RuntimeID SetHeading{ 2229625 };
 		inline constexpr RE::RuntimeID TrespassAlarm{ 2229834 };
+		inline constexpr RE::RuntimeID UpdateVendorFaction{ 2229790, 1253392 };
 		inline constexpr RE::RuntimeID UpdateVoiceTimer{ 2230178 };
 		inline constexpr RE::RuntimeID GetBodyPartData{ 2229571, 1485196 };
 		inline constexpr RE::RuntimeID GetEquippedItem{ 2231089, 1318331 };

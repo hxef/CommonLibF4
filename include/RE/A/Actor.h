@@ -660,6 +660,16 @@ namespace RE
 			return func(this, a_refr, a_owner, a_crime);
 		}
 
+		// Works out vendorFaction again, from the actor's factions, when its
+		// timer allows. A trade does this first, and the field stays empty
+		// until something does.
+		void UpdateVendorFaction()
+		{
+			using func_t = decltype(&Actor::UpdateVendorFaction);
+			static REL::Relocation<func_t> func{ ID::Actor::UpdateVendorFaction };
+			return func(this);
+		}
+
 		void UpdateVoiceTimer(bool a_force)
 		{
 			using func_t = decltype(&Actor::UpdateVoiceTimer);
