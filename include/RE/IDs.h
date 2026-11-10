@@ -353,6 +353,14 @@ namespace RE::ID
 			inline constexpr RE::RuntimeID GetData{ 2189206 };
 		}
 
+		namespace Property
+		{
+			namespace Mod
+			{
+				inline constexpr RE::RuntimeID ApplyToInt{ 2197635, 31540 };
+			}
+		}
+
 		namespace Template
 		{
 			namespace Items

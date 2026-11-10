@@ -104,6 +104,19 @@ namespace RE::BGSMod
 			};
 			static_assert(sizeof(FormValuePair) == 0x8);
 
+			// What the game makes of an int property, such as an armor's
+			// Health, on a value that is a_current so far. kSet gives the
+			// value, kMul adds the value read as a float times a_base, the
+			// record's own value, cut toward 0, and kAdd adds the value.
+			// Each also adds step x 0.01 for every rank above 1, and rank 0
+			// counts as 1. Both kSet and kAdd read the value as an int.
+			[[nodiscard]] std::int32_t ApplyToInt(std::int32_t a_current, std::int32_t a_base, std::uint8_t a_rank) const
+			{
+				using func_t = decltype(&Mod::ApplyToInt);
+				static REL::Relocation<func_t> func{ ID::BGSMod::Property::Mod::ApplyToInt };
+				return func(this, a_current, a_base, a_rank);
+			}
+
 			union DATATYPE
 			{
 			public:
